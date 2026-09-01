@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OXO Originals | Exclusive 4K Flagship Series & Sagas</title>
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="OXO XTREAM" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">OXO XTREAM</span>
+          <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="sports.html" class="nav-link"><i class="fas fa-futbol"></i> Sports <span class="nav-badge-live">LIVE</span></a></li>
+        <li><a href="movies.html" class="nav-link"><i class="fas fa-film"></i> Movies</a></li>
+        <li><a href="originals.html" class="nav-link active"><i class="fas fa-crown"></i> Originals</a></li>
+        <li><a href="media.html" class="nav-link"><i class="fas fa-tv"></i> Media & TV</a></li>
+        <li><a href="pricing.html" class="nav-link"><i class="fas fa-gem"></i> VIP Plans</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-btn search-trigger-btn" title="Search Content">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <a href="watchlist.html" class="watchlist-nav-btn" title="My Watchlist">
+          <i class="fas fa-bookmark"></i>
+          <span class="nav-badge-count watchlist-count-badge">3</span>
+        </a>
+
+        <a href="pricing.html" class="vip-btn">
+          <i class="fas fa-bolt"></i> GET VIP PASS
+        </a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-container">
+      <div class="hero-badges-row">
+        <span class="hero-badge-pill"><i class="fas fa-crown"></i> OXO ORIGINALS NETWORK</span>
+        <span class="hero-quality-pill">4K HDR DOLBY VISION</span>
+        <span class="hero-quality-pill">EXCLUSIVE PRODUCTIONS</span>
+      </div>
+      <h1 class="page-hero-title">Exclusive OXO Originals & Sagas</h1>
+      <p class="page-hero-subtitle">
+        Award-winning original epics produced exclusively for OXO Xtream. Dive into deep interplanetary sagas, high-stakes espionage, and gripping motorsport docuseries.
+      </p>
+
+      <div class="filter-tabs-bar">
+        <div class="tab-buttons-group">
+          <button class="tab-btn active" onclick="selectOriginalSeries('org-1', this)">Red Horizon: Martian Legacy</button>
+          <button class="tab-btn" onclick="selectOriginalSeries('org-2', this)">Code of Shadows</button>
+          <button class="tab-btn" onclick="selectOriginalSeries('org-3', this)">Velocity: Born to Race</button>
+          <button class="tab-btn" onclick="selectOriginalSeries('org-4', this)">The Last Alchemist</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVE SERIES SHOWCASE & EPISODES -->
+  <main class="content-section">
+    <!-- Series Meta Info Box -->
+    <div id="series-showcase-box" class="highlight-banner-card" style="margin-bottom: 3rem;">
+      <!-- Populated via JS -->
+    </div>
+
+    <!-- Episodes Guide Section -->
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-accent-bar"></div>
+        <div>
+          <h2 class="section-title" id="episodes-header-title">Season 1 Episodes</h2>
+          <p class="section-subtitle">Stream in full 4K HDR or download offline for your flight or commute</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="episodes-container" id="episodes-list-container">
+      <!-- Populated via JS -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 OXO XTREAM ORIGINALS. All rights reserved. On-Demand. Experience. Originals.</div>
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    function selectOriginalSeries(seriesId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const series = OTT_DATA.originals.find(s => s.id === seriesId) || OTT_DATA.originals[0];
+      
+      // Update Showcase Box
+      const showcaseBox = document.getElementById('series-showcase-box');
+      if (showcaseBox) {
+        showcaseBox.innerHTML = `
+          <img src="${series.backdrop}" alt="${series.title}" class="highlight-banner-bg">
+          <div class="highlight-banner-content">
+            <div class="hero-badges-row">
+              <span class="hero-badge-pill"><i class="fas fa-crown"></i> ${series.badge}</span>
+              <span class="hero-quality-pill">${series.quality}</span>
+              <span class="hero-rating"><i class="fas fa-star"></i> ${series.rating}</span>
+            </div>
+            <h2 style="font-family:var(--font-heading); font-size:2.6rem; font-weight:900; margin-bottom:0.75rem; line-height:1.1;">
+              ${series.title}
+            </h2>
+            <p style="color:#e0e0e0; font-size:1.05rem; line-height:1.6; margin-bottom:1.5rem;">
+              ${series.description}
+            </p>
+            <div style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem;">
+              <strong>Category:</strong> ${series.genres.join(', ')} • <strong>Seasons:</strong> ${series.seasons || 'Season 1'}
+            </div>
+            <div class="hero-actions">
+              <button class="btn-primary" onclick="OXOPlayer.playItem(findMediaById('${series.id}'))">
+                <i class="fas fa-play"></i> Watch Episode 1
+              </button>
+              <button class="btn-secondary" onclick="OXOApp.toggleWatchlist('${series.id}')">
+                <i class="fas fa-bookmark"></i> Save Series
+              </button>
+              <button class="btn-secondary" onclick="OXOApp.triggerDownload('${series.id}')">
+                <i class="fas fa-download"></i> Download Season
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      // Update Episodes List
+      const epHeader = document.getElementById('episodes-header-title');
+      if (epHeader) epHeader.innerText = `${series.title} • Episodes`;
+
+      const episodesContainer = document.getElementById('episodes-list-container');
+      if (episodesContainer) {
+        const episodes = series.episodes || [
+          { num: 1, title: 'Pilot: The Catalyst', duration: '56m', thumb: series.poster, desc: 'The opening chapter introduces the central conflict as stakes heighten across global factions.' },
+          { num: 2, title: 'Chapter 2: Under Surveillance', duration: '50m', thumb: series.backdrop, desc: 'An unexpected ally emerges while cryptographic protocols fall under enemy interception.' },
+          { num: 3, title: 'Chapter 3: The Point of No Return', duration: '58m', thumb: series.poster, desc: 'A decisive raid changes the balance of power forever.' }
+        ];
+
+        episodesContainer.innerHTML = episodes.map(ep => `
+          <div class="episode-item" onclick="OXOPlayer.playItem(findMediaById('${series.id}'))">
+            <div class="episode-thumb-wrap">
+              <img src="${ep.thumb}" alt="${ep.title}">
+              <div class="episode-play-icon"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-info">
+              <div class="episode-num">Episode ${ep.num}</div>
+              <div class="episode-title">${ep.title}</div>
+              <div class="episode-desc">${ep.desc}</div>
+              <div class="episode-duration"><i class="far fa-clock"></i> ${ep.duration} • 4K Ultra HD • Dolby 5.1</div>
+            </div>
+            <div onclick="event.stopPropagation()">
+              <button class="btn-icon-circle" title="Download Episode" onclick="OXOApp.showToast('Downloading Episode ${ep.num}...', 'fa-arrow-down')">
+                <i class="fas fa-download"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      selectOriginalSeries('org-1', null);
+    });
+  </script>
+</body>
+</html>

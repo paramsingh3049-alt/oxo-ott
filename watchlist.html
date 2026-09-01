@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Watchlist & Offline Downloads | OXO XTREAM</title>
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="OXO XTREAM" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">OXO XTREAM</span>
+          <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="sports.html" class="nav-link"><i class="fas fa-futbol"></i> Sports <span class="nav-badge-live">LIVE</span></a></li>
+        <li><a href="movies.html" class="nav-link"><i class="fas fa-film"></i> Movies</a></li>
+        <li><a href="originals.html" class="nav-link"><i class="fas fa-crown"></i> Originals</a></li>
+        <li><a href="media.html" class="nav-link"><i class="fas fa-tv"></i> Media & TV</a></li>
+        <li><a href="pricing.html" class="nav-link"><i class="fas fa-gem"></i> VIP Plans</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-btn search-trigger-btn" title="Search Content">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <a href="watchlist.html" class="watchlist-nav-btn active" title="My Watchlist">
+          <i class="fas fa-bookmark"></i>
+          <span class="nav-badge-count watchlist-count-badge">3</span>
+        </a>
+
+        <a href="pricing.html" class="vip-btn">
+          <i class="fas fa-bolt"></i> GET VIP PASS
+        </a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-container">
+      <div class="hero-badges-row">
+        <span class="hero-badge-pill"><i class="fas fa-bookmark"></i> PERSONAL MEDIA VAULT</span>
+        <span class="hero-quality-pill">SAVED TITLES</span>
+        <span class="hero-quality-pill">OFFLINE STORAGE</span>
+      </div>
+      <h1 class="page-hero-title">My Watchlist & Offline Downloads</h1>
+      <p class="page-hero-subtitle">
+        Your saved movies, live sports fixtures, and offline downloaded 4K files ready for playback anywhere, even without internet.
+      </p>
+
+      <div class="filter-tabs-bar">
+        <div class="tab-buttons-group">
+          <button class="tab-btn active" id="tab-btn-watchlist" onclick="switchVaultTab('watchlist')">
+            <i class="fas fa-bookmark"></i> Saved Watchlist (<span class="watchlist-count-badge">0</span>)
+          </button>
+          <button class="tab-btn" id="tab-btn-downloads" onclick="switchVaultTab('downloads')">
+            <i class="fas fa-download"></i> Offline Downloads (<span id="download-count-badge">0</span>)
+          </button>
+        </div>
+
+        <button class="btn-secondary" style="font-size:0.85rem; padding:0.5rem 1.2rem;" onclick="clearCurrentVault()">
+          <i class="fas fa-trash-alt"></i> Clear All
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT MAIN -->
+  <main class="content-section">
+    <!-- Watchlist View -->
+    <div id="watchlist-view-section">
+      <div class="content-grid" id="watchlist-grid" style="padding-top:0;"></div>
+    </div>
+
+    <!-- Downloads View -->
+    <div id="downloads-view-section" style="display:none; max-width:1000px; margin:0 auto;">
+      <div id="downloads-list-container"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 OXO XTREAM. All rights reserved. On-Demand. Experience. Originals.</div>
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let activeTab = 'watchlist';
+
+    function switchVaultTab(tab) {
+      activeTab = tab;
+      document.getElementById('tab-btn-watchlist').classList.toggle('active', tab === 'watchlist');
+      document.getElementById('tab-btn-downloads').classList.toggle('active', tab === 'downloads');
+
+      document.getElementById('watchlist-view-section').style.display = tab === 'watchlist' ? 'block' : 'none';
+      document.getElementById('downloads-view-section').style.display = tab === 'downloads' ? 'block' : 'none';
+
+      if (tab === 'watchlist') renderWatchlist();
+      else renderDownloads();
+    }
+
+    function renderWatchlist() {
+      const grid = document.getElementById('watchlist-grid');
+      if (!grid) return;
+
+      const items = OXOApp.watchlist.map(id => findMediaById(id)).filter(Boolean);
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align:center; padding:5rem 2rem; color:var(--text-muted);">
+            <i class="fas fa-bookmark" style="font-size:3.5rem; color:var(--oxo-red); margin-bottom:1.5rem;"></i>
+            <h3 style="font-size:1.6rem; color:#fff; margin-bottom:0.5rem;">Your Watchlist is Empty</h3>
+            <p style="margin-bottom:1.5rem;">Browse our 4K Cinema, Live Sports, and Originals to add titles you want to watch later.</p>
+            <a href="index.html" class="btn-primary"><i class="fas fa-compass"></i> Discover Content</a>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = items.map(item => `
+        <div class="media-card" onclick="OXOPlayer.playItem(findMediaById('${item.id}'))">
+          <div class="card-poster-wrap portrait">
+            <img class="card-poster" src="${item.poster || item.backdrop}" alt="${item.title}">
+            <span class="card-badge">${item.badge || item.category}</span>
+            <span class="card-quality-tag">${item.quality || '4K'}</span>
+            <div class="card-play-overlay">
+              <div class="play-hover-btn"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">${item.title}</h4>
+            <div class="card-meta-line">
+              <span class="card-rating"><i class="fas fa-star"></i> ${item.rating || '9.8'}</span>
+              <span>${item.year || '2026'}</span>
+            </div>
+            <div class="card-quick-actions" onclick="event.stopPropagation()">
+              <button class="card-btn-action" onclick="OXOApp.triggerDownload('${item.id}')">
+                <i class="fas fa-download"></i> Download
+              </button>
+              <button class="card-btn-action active" onclick="removeFromWatchlist('${item.id}')">
+                <i class="fas fa-trash-alt"></i> Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderDownloads() {
+      const container = document.getElementById('downloads-list-container');
+      const badge = document.getElementById('download-count-badge');
+      if (badge) badge.innerText = OXOApp.downloads.length;
+      if (!container) return;
+
+      if (OXOApp.downloads.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:5rem 2rem; color:var(--text-muted);">
+            <i class="fas fa-download" style="font-size:3.5rem; color:var(--oxo-red); margin-bottom:1.5rem;"></i>
+            <h3 style="font-size:1.6rem; color:#fff; margin-bottom:0.5rem;">No Offline Downloads</h3>
+            <p style="margin-bottom:1.5rem;">Download any movie or series to stream offline without internet connection.</p>
+            <a href="movies.html" class="btn-primary"><i class="fas fa-film"></i> Browse Movies</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = OXOApp.downloads.map(dl => {
+        const item = findMediaById(dl.id) || { title: dl.title, poster: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80' };
+        return `
+          <div class="download-item">
+            <div style="display:flex; align-items:center; gap:1rem; flex:1;">
+              <img src="${item.poster || item.backdrop}" alt="${dl.title}" style="width:70px; height:50px; object-fit:cover; border-radius:4px;">
+              <div style="flex:1;">
+                <h4 style="font-size:1.05rem; font-weight:700; margin-bottom:0.2rem;">${dl.title}</h4>
+                <div style="font-size:0.82rem; color:var(--text-muted);">
+                  ${dl.size} • <span style="color:${dl.progress >= 100 ? 'var(--accent-green)' : 'var(--oxo-red-glow)'}; font-weight:700;">${dl.status} (${dl.progress}%)</span>
+                </div>
+                <div class="download-progress-bar">
+                  <div class="download-progress-fill" style="width:${dl.progress}%;"></div>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <button class="btn-primary" style="padding:0.5rem 1rem; font-size:0.85rem;" onclick="OXOPlayer.playItem(findMediaById('${dl.id}'))">
+                <i class="fas fa-play"></i> Watch Offline
+              </button>
+              <button class="btn-secondary" style="padding:0.5rem 0.8rem; font-size:0.85rem;" onclick="removeDownload('${dl.id}')">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function removeFromWatchlist(id) {
+      OXOApp.toggleWatchlist(id);
+      renderWatchlist();
+    }
+
+    function removeDownload(id) {
+      OXOApp.downloads = OXOApp.downloads.filter(d => d.id !== id);
+      OXOApp.saveStorage();
+      renderDownloads();
+      OXOApp.showToast('Removed title from offline storage', 'fa-trash');
+    }
+
+    function clearCurrentVault() {
+      if (activeTab === 'watchlist') {
+        OXOApp.watchlist = [];
+        OXOApp.saveStorage();
+        renderWatchlist();
+        OXOApp.showToast('Watchlist cleared', 'fa-check');
+      } else {
+        OXOApp.downloads = [];
+        OXOApp.saveStorage();
+        renderDownloads();
+        OXOApp.showToast('Offline downloads cleared', 'fa-check');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderWatchlist();
+      const badge = document.getElementById('download-count-badge');
+      if (badge) badge.innerText = OXOApp.downloads.length;
+    });
+  </script>
+</body>
+</html>

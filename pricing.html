@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Subscription Plans | OXO XTREAM</title>
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .comparison-table-wrap {
+      max-width: 1200px;
+      margin: 4rem auto 0;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--oxo-border);
+      overflow-x: auto;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--oxo-border);
+    }
+    .comparison-table th {
+      background: rgba(0, 0, 0, 0.4);
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .comparison-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .table-check {
+      color: var(--oxo-red-glow);
+      font-size: 1.1rem;
+    }
+    .table-cross {
+      color: var(--text-dim);
+    }
+    .faq-section {
+      max-width: 900px;
+      margin: 5rem auto 0;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--oxo-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.25rem 1.5rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color var(--transition-fast);
+    }
+    .faq-question:hover {
+      color: var(--oxo-red-glow);
+    }
+    .faq-answer {
+      padding: 0 1.5rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-question i {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="OXO XTREAM" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">OXO XTREAM</span>
+          <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="sports.html" class="nav-link"><i class="fas fa-futbol"></i> Sports <span class="nav-badge-live">LIVE</span></a></li>
+        <li><a href="movies.html" class="nav-link"><i class="fas fa-film"></i> Movies</a></li>
+        <li><a href="originals.html" class="nav-link"><i class="fas fa-crown"></i> Originals</a></li>
+        <li><a href="media.html" class="nav-link"><i class="fas fa-tv"></i> Media & TV</a></li>
+        <li><a href="pricing.html" class="nav-link active"><i class="fas fa-gem"></i> VIP Plans</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-btn search-trigger-btn" title="Search Content">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <a href="watchlist.html" class="watchlist-nav-btn" title="My Watchlist">
+          <i class="fas fa-bookmark"></i>
+          <span class="nav-badge-count watchlist-count-badge">3</span>
+        </a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-container" style="text-align: center;">
+      <div class="hero-badges-row" style="justify-content: center;">
+        <span class="hero-badge-pill"><i class="fas fa-crown"></i> UNLOCK UNLIMITED 4K STREAMING</span>
+        <span class="hero-quality-pill">CANCEL ANYTIME</span>
+      </div>
+      <h1 class="page-hero-title">Simple, Transparent VIP Pricing</h1>
+      <p class="page-hero-subtitle" style="margin:0 auto 1.5rem;">
+        Get unmetered access to 4K live sports stadiums, exclusive original sagas, blockbusters, and multi-device offline downloads.
+      </p>
+
+      <!-- Billing Cycle Toggle -->
+      <div class="billing-toggle-wrap">
+        <button class="billing-toggle-btn active" id="btn-monthly" onclick="setBilling('monthly')">Monthly Billing</button>
+        <button class="billing-toggle-btn" id="btn-annual" onclick="setBilling('annual')">
+          Annual Billing <span class="save-badge">SAVE 35%</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING CARDS -->
+  <main class="pricing-section" style="padding-top: 2rem;">
+    <div class="pricing-grid" id="pricing-cards-grid">
+      <!-- Populated via JS -->
+    </div>
+
+    <!-- FEATURE COMPARISON TABLE -->
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Features & Capabilities</th>
+            <th>Free Pass</th>
+            <th>Sports Pass</th>
+            <th style="color:var(--oxo-red-glow);">Xtream VIP</th>
+            <th>Annual Ultimate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Video Resolution</strong></td>
+            <td>1080p Full HD</td>
+            <td>4K 60FPS HDR</td>
+            <td style="color:var(--oxo-red-glow); font-weight:700;">4K UHD + Dolby Vision</td>
+            <td>4K UHD + Dolby Vision</td>
+          </tr>
+          <tr>
+            <td><strong>Simultaneous Screens</strong></td>
+            <td>1 Screen</td>
+            <td>2 Screens</td>
+            <td style="color:var(--oxo-red-glow); font-weight:700;">4 Screens</td>
+            <td>6 Screens</td>
+          </tr>
+          <tr>
+            <td><strong>Live Sports & Multi-Cam</strong></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+          </tr>
+          <tr>
+            <td><strong>Full OXO Originals Library</strong></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+          </tr>
+          <tr>
+            <td><strong>Dolby Atmos 7.1 Audio</strong></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+          </tr>
+          <tr>
+            <td><strong>Offline Downloads</strong></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+          </tr>
+          <tr>
+            <td><strong>Live PPV Championship Events</strong></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td>Discounted</td>
+            <td><i class="fas fa-check table-check"></i> Included Free</td>
+          </tr>
+          <tr>
+            <td><strong>Ad-Free Experience</strong></td>
+            <td><i class="fas fa-times table-cross"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+            <td><i class="fas fa-check table-check"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FAQ ACCORDION -->
+    <div class="faq-section">
+      <div class="section-header" style="text-align: center; justify-content: center; margin-bottom: 2rem;">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-item open" onclick="this.classList.toggle('open')">
+        <div class="faq-question">
+          <span>What devices are supported on OXO Xtream?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          OXO Xtream is fully compatible with Smart TVs (Apple TV, Android TV, Fire TV, Samsung Tizen, LG webOS), game consoles (PS5, Xbox Series X/S), iOS & iPadOS, Android phones/tablets, Mac, and Windows PC.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">
+          <span>Can I cancel or switch my plan at any time?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes! There are no contracts or cancellation fees. You can upgrade, downgrade, or cancel your subscription whenever you wish from your account dashboard.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">
+          <span>How does offline downloading work?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          With Xtream VIP and Annual Ultimate passes, you can tap the download button on any movie, docuseries, or sports replay to save it directly to your device for offline viewing without requiring data or Wi-Fi.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">
+          <span>What video quality and internet speed is required for 4K streams?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We recommend a high-speed connection of at least 25 Mbps for crystal clear 4K UHD 60FPS streams with Dolby Vision and Dolby Atmos audio tracks.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 OXO XTREAM VIP. All rights reserved. Premium Streaming Ecosystem.</div>
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let billingType = 'monthly';
+
+    function renderPricingCards() {
+      const grid = document.getElementById('pricing-cards-grid');
+      if (!grid || !OTT_DATA.plans) return;
+
+      grid.innerHTML = OTT_DATA.plans.map(plan => {
+        const price = billingType === 'monthly' ? plan.priceMonthly : plan.priceAnnual;
+        const period = billingType === 'monthly' ? plan.period : '/year billed annually';
+
+        return `
+          <div class="pricing-card ${plan.popular ? 'featured' : ''}">
+            ${plan.badge ? `<div class="plan-popular-badge">${plan.badge}</div>` : ''}
+            <div class="plan-name">${plan.name}</div>
+            <div class="plan-price-wrap">
+              <span class="plan-price">${price}</span>
+              <span class="plan-period">${period}</span>
+            </div>
+            <ul class="plan-features-list">
+              ${plan.features.map(f => `<li class="plan-feature-item"><i class="fas fa-check"></i> ${f}</li>`).join('')}
+            </ul>
+            <button class="plan-cta-btn" onclick="OXOApp.openCheckout('${plan.name}', '${price} ${period}')">
+              ${plan.cta}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setBilling(type) {
+      billingType = type;
+      document.getElementById('btn-monthly').classList.toggle('active', type === 'monthly');
+      document.getElementById('btn-annual').classList.toggle('active', type === 'annual');
+      renderPricingCards();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPricingCards();
+    });
+  </script>
+</body>
+</html>

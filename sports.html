@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Sports Stadium | OXO XTREAM 4K HDR Sports</title>
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="OXO XTREAM" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">OXO XTREAM</span>
+          <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="sports.html" class="nav-link active"><i class="fas fa-futbol"></i> Sports <span class="nav-badge-live">LIVE</span></a></li>
+        <li><a href="movies.html" class="nav-link"><i class="fas fa-film"></i> Movies</a></li>
+        <li><a href="originals.html" class="nav-link"><i class="fas fa-crown"></i> Originals</a></li>
+        <li><a href="media.html" class="nav-link"><i class="fas fa-tv"></i> Media & TV</a></li>
+        <li><a href="pricing.html" class="nav-link"><i class="fas fa-gem"></i> VIP Plans</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-btn search-trigger-btn" title="Search Content">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <a href="watchlist.html" class="watchlist-nav-btn" title="My Watchlist">
+          <i class="fas fa-bookmark"></i>
+          <span class="nav-badge-count watchlist-count-badge">3</span>
+        </a>
+
+        <a href="pricing.html" class="vip-btn">
+          <i class="fas fa-bolt"></i> GET SPORTS PASS
+        </a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-container">
+      <div class="hero-badges-row">
+        <span class="hero-badge-pill"><i class="fas fa-satellite-dish"></i> OXO SPORTS ARENA</span>
+        <span class="hero-quality-pill">4K 60FPS HDR</span>
+        <span class="hero-quality-pill">MULTI-CAM VIEW</span>
+      </div>
+      <h1 class="page-hero-title">Live Sports Stadium & World Championships</h1>
+      <p class="page-hero-subtitle">
+        Stream Europe's Champions League, Formula 1 Grand Prix, ICC Cricket World Cup, NBA Finals, and UFC Championship fights with ultra-low latency.
+      </p>
+
+      <!-- Sports Category Filter Tabs -->
+      <div class="filter-tabs-bar">
+        <div class="tab-buttons-group">
+          <button class="tab-btn active" onclick="filterSports('all', this)"><i class="fas fa-th"></i> All Sports</button>
+          <button class="tab-btn" onclick="filterSports('live', this)"><i class="fas fa-broadcast-tower"></i> Live Now (3)</button>
+          <button class="tab-btn" onclick="filterSports('football', this)"><i class="fas fa-futbol"></i> Football</button>
+          <button class="tab-btn" onclick="filterSports('f1', this)"><i class="fas fa-flag-checkered"></i> Formula 1</button>
+          <button class="tab-btn" onclick="filterSports('cricket', this)"><i class="fas fa-baseball-ball"></i> Cricket</button>
+          <button class="tab-btn" onclick="filterSports('nba', this)"><i class="fas fa-basketball-ball"></i> NBA Basketball</button>
+          <button class="tab-btn" onclick="filterSports('ufc', this)"><i class="fas fa-fist-raised"></i> UFC & Combat</button>
+        </div>
+
+        <div style="display:flex; gap:0.75rem;">
+          <button class="btn-secondary" style="padding:0.5rem 1.2rem; font-size:0.85rem;" onclick="OXOApp.showToast('🔔 Match alerts enabled for all live fixtures!', 'fa-bell')">
+            <i class="fas fa-bell"></i> Set Match Alerts
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPORTS CARDS GRID -->
+  <main class="content-grid" id="sports-grid-container">
+    <!-- Populated dynamically via JS -->
+  </main>
+
+  <!-- MULTI-CAM & LIVE TELEMETRY FEATURE PROMO -->
+  <section class="highlight-banner-section">
+    <div class="highlight-banner-card" style="background: linear-gradient(135deg, #100609 0%, #0d121c 100%);">
+      <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80" alt="F1 Cockpit Cam" class="highlight-banner-bg">
+      <div class="highlight-banner-content">
+        <div class="hero-badges-row">
+          <span class="hero-badge-pill"><i class="fas fa-video"></i> OXO MULTI-CAM XP</span>
+          <span class="hero-quality-pill">4K 120Hz</span>
+        </div>
+        <h2 style="font-family:var(--font-heading); font-size:2.4rem; font-weight:900; margin-bottom:0.75rem;">
+          Switch Angles in Real-Time
+        </h2>
+        <p style="color:#d1d5db; font-size:1rem; line-height:1.6; margin-bottom:1.75rem;">
+          Take control of the broadcast with live cockpit telemetry, on-board driver cameras, tactical bird's-eye views, and corner microphones during live telecasts.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="OXOPlayer.playItem(findMediaById('sp-3'))">
+            <i class="fas fa-play"></i> Watch F1 Cockpit Feed
+          </button>
+          <button class="btn-secondary" onclick="OXOApp.showToast('Switched to Tactical Multi-Cam Angle 2', 'fa-video')">
+            <i class="fas fa-random"></i> Test Multi-Angle Feed
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 OXO XTREAM SPORTS. All rights reserved. Ultra Low Latency 4K HDR Sports.</div>
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    function renderSportsGrid(items) {
+      const container = document.getElementById('sports-grid-container');
+      if (!container) return;
+
+      container.innerHTML = items.map(item => `
+        <div class="media-card sports-card" style="flex:auto;" onclick="OXOPlayer.playItem(findMediaById('${item.id}'))">
+          <div class="sports-score-banner">
+            <span class="sports-match-status"><i class="fas fa-circle" style="font-size:0.5rem;"></i> ${item.status}</span>
+            <span style="color:var(--accent-gold); font-weight:700;">${item.timeOrScore}</span>
+          </div>
+          <div class="card-poster-wrap">
+            <img class="card-poster" src="${item.poster}" alt="${item.title}">
+            <span class="card-badge badge-live">${item.badge}</span>
+            <span class="card-quality-tag">4K 60FPS</span>
+            <div class="card-play-overlay">
+              <div class="play-hover-btn"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="sports-teams">${item.teams}</div>
+            <div class="card-title" style="font-size:0.85rem; color:var(--text-muted); font-weight:500;">${item.tournament} • ${item.venue}</div>
+            <p style="font-size:0.82rem; color:var(--text-dim); margin-top:0.4rem; line-height:1.4;">${item.description}</p>
+            
+            <div class="card-quick-actions" onclick="event.stopPropagation()">
+              <button class="card-btn-action" onclick="OXOApp.showQuickView('${item.id}')">
+                <i class="fas fa-info-circle"></i> Stats & Lineups
+              </button>
+              <button class="card-btn-action ${OXOApp.watchlist.includes(item.id) ? 'active' : ''}" data-watchlist-id="${item.id}" onclick="OXOApp.toggleWatchlist('${item.id}')">
+                <i class="fas fa-plus"></i> Watchlist
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterSports(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      if (category === 'all') {
+        renderSportsGrid(OTT_DATA.sports);
+      } else if (category === 'live') {
+        renderSportsGrid(OTT_DATA.sports.filter(s => s.status.includes('LIVE')));
+      } else if (category === 'football') {
+        renderSportsGrid(OTT_DATA.sports.filter(s => s.tournament.includes('Champions') || s.title.includes('Champions')));
+      } else if (category === 'f1') {
+        renderSportsGrid(OTT_DATA.sports.filter(s => s.tournament.includes('Formula 1') || s.title.includes('Formula 1')));
+      } else if (category === 'cricket') {
+        renderSportsGrid(OTT_DATA.sports.filter(s => s.tournament.includes('Cricket') || s.tournament.includes('ICC')));
+      } else if (category === 'nba') {
+        renderSportsGrid(OTT_DATA.sports.filter(s => s.tournament.includes('NBA')));
+      } else if (category === 'ufc') {
+        renderSportsGrid(OTT_DATA.sports.filter(s => s.tournament.includes('UFC')));
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSportsGrid(OTT_DATA.sports);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4K Cinema & Blockbusters | OXO XTREAM</title>
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="OXO XTREAM" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">OXO XTREAM</span>
+          <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="sports.html" class="nav-link"><i class="fas fa-futbol"></i> Sports <span class="nav-badge-live">LIVE</span></a></li>
+        <li><a href="movies.html" class="nav-link active"><i class="fas fa-film"></i> Movies</a></li>
+        <li><a href="originals.html" class="nav-link"><i class="fas fa-crown"></i> Originals</a></li>
+        <li><a href="media.html" class="nav-link"><i class="fas fa-tv"></i> Media & TV</a></li>
+        <li><a href="pricing.html" class="nav-link"><i class="fas fa-gem"></i> VIP Plans</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-btn search-trigger-btn" title="Search Content">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <a href="watchlist.html" class="watchlist-nav-btn" title="My Watchlist">
+          <i class="fas fa-bookmark"></i>
+          <span class="nav-badge-count watchlist-count-badge">3</span>
+        </a>
+
+        <a href="pricing.html" class="vip-btn">
+          <i class="fas fa-bolt"></i> GET VIP PASS
+        </a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-container">
+      <div class="hero-badges-row">
+        <span class="hero-badge-pill"><i class="fas fa-film"></i> IMAX ENHANCED CINEMA</span>
+        <span class="hero-quality-pill">4K ULTRA HD</span>
+        <span class="hero-quality-pill">DOLBY ATMOS 7.1</span>
+      </div>
+      <h1 class="page-hero-title">Blockbuster Movies & Global Cinema</h1>
+      <p class="page-hero-subtitle">
+        Explore critically acclaimed masterpieces, high-octane blockbusters, mind-bending science fiction, and dark thrillers in uncompressed 4K HDR.
+      </p>
+
+      <!-- Genre Filter Tabs -->
+      <div class="filter-tabs-bar">
+        <div class="tab-buttons-group">
+          <button class="tab-btn active" onclick="filterCinema('all', this)"><i class="fas fa-th"></i> All Movies</button>
+          <button class="tab-btn" onclick="filterCinema('Sci-Fi', this)"><i class="fas fa-rocket"></i> Sci-Fi & Cyberpunk</button>
+          <button class="tab-btn" onclick="filterCinema('Action', this)"><i class="fas fa-fire"></i> Action & Survival</button>
+          <button class="tab-btn" onclick="filterCinema('Crime', this)"><i class="fas fa-user-secret"></i> Neo-Noir & Crime</button>
+          <button class="tab-btn" onclick="filterCinema('Martial Arts', this)"><i class="fas fa-shield-alt"></i> Martial Arts</button>
+        </div>
+
+        <div>
+          <select id="movie-sort-select" onchange="sortCinema(this.value)" style="background:var(--bg-card); color:#fff; border:1px solid var(--oxo-border); padding:0.5rem 1rem; border-radius:var(--radius-full); font-size:0.85rem; font-weight:600;">
+            <option value="rating">Sort by: Highest Rated</option>
+            <option value="year">Sort by: Release Year</option>
+            <option value="title">Sort by: Title (A-Z)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOVIES GRID -->
+  <main class="content-grid" id="movies-grid-container">
+    <!-- Populated dynamically via JS -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 OXO XTREAM CINEMA. All rights reserved. IMAX Enhanced 4K Streams.</div>
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let currentCinemaList = [...OTT_DATA.cinema, OTT_DATA.heroSlides[0]];
+
+    function renderMoviesGrid(items) {
+      const container = document.getElementById('movies-grid-container');
+      if (!container) return;
+
+      container.innerHTML = items.map(item => `
+        <div class="media-card" onclick="OXOPlayer.playItem(findMediaById('${item.id}'))">
+          <div class="card-poster-wrap portrait">
+            <img class="card-poster" src="${item.poster}" alt="${item.title}">
+            <span class="card-badge">${item.badge}</span>
+            <span class="card-quality-tag">${item.quality}</span>
+            <div class="card-play-overlay">
+              <div class="play-hover-btn"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">${item.title}</h4>
+            <div class="card-meta-line">
+              <span class="card-rating"><i class="fas fa-star"></i> ${item.rating}</span>
+              <span>${item.year}</span>
+              <span>${item.duration}</span>
+            </div>
+            <div style="font-size:0.8rem; color:var(--text-dim); margin-top:0.4rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+              ${Array.isArray(item.genres) ? item.genres.join(', ') : item.category}
+            </div>
+            <div class="card-quick-actions" onclick="event.stopPropagation()">
+              <button class="card-btn-action" onclick="OXOApp.showQuickView('${item.id}')">
+                <i class="fas fa-info-circle"></i> Synopsis
+              </button>
+              <button class="card-btn-action ${OXOApp.watchlist.includes(item.id) ? 'active' : ''}" data-watchlist-id="${item.id}" onclick="OXOApp.toggleWatchlist('${item.id}')">
+                <i class="fas fa-plus"></i> Watchlist
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCinema(genre, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      if (genre === 'all') {
+        renderMoviesGrid(currentCinemaList);
+      } else {
+        const filtered = currentCinemaList.filter(m => m.genres && m.genres.includes(genre));
+        renderMoviesGrid(filtered);
+      }
+    }
+
+    function sortCinema(sortBy) {
+      let sorted = [...currentCinemaList];
+      if (sortBy === 'rating') {
+        sorted.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+      } else if (sortBy === 'year') {
+        sorted.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+      } else if (sortBy === 'title') {
+        sorted.sort((a, b) => a.title.localeCompare(b.title));
+      }
+      renderMoviesGrid(sorted);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMoviesGrid(currentCinemaList);
+    });
+  </script>
+</body>
+</html>

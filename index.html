@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OXO XTREAM | On-Demand • Experience • Originals | Sports, Media, Entertainment</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="OXO XTREAM Logo" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">OXO XTREAM</span>
+          <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="sports.html" class="nav-link"><i class="fas fa-futbol"></i> Sports <span class="nav-badge-live">LIVE</span></a></li>
+        <li><a href="movies.html" class="nav-link"><i class="fas fa-film"></i> Movies</a></li>
+        <li><a href="originals.html" class="nav-link"><i class="fas fa-crown"></i> Originals</a></li>
+        <li><a href="media.html" class="nav-link"><i class="fas fa-tv"></i> Media & TV</a></li>
+        <li><a href="pricing.html" class="nav-link"><i class="fas fa-gem"></i> VIP Plans</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-btn search-trigger-btn" title="Search Content">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <a href="watchlist.html" class="watchlist-nav-btn" title="My Watchlist">
+          <i class="fas fa-bookmark"></i>
+          <span class="nav-badge-count watchlist-count-badge">3</span>
+        </a>
+
+        <a href="pricing.html" class="vip-btn">
+          <i class="fas fa-bolt"></i> GET VIP PASS
+        </a>
+
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO BILLBOARD SLIDER
+       ========================================================================== -->
+  <section class="hero-section">
+    <div class="hero-slider" id="hero-slider">
+      <!-- Slides will be rendered dynamically by js/app.js -->
+    </div>
+
+    <div class="hero-controls">
+      <button class="hero-arrow-btn" id="hero-prev-btn"><i class="fas fa-chevron-left"></i></button>
+      <div class="hero-indicators-wrap" id="hero-indicators" style="display:flex; gap:0.5rem;"></div>
+      <button class="hero-arrow-btn" id="hero-next-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CATEGORY QUICK PILLS & LIVE SPORTS TICKER
+       ========================================================================== -->
+  <section class="category-bar-section">
+    <div class="category-bar-container">
+      <div class="category-pills">
+        <a href="index.html" class="cat-pill active"><i class="fas fa-globe"></i> All Stream</a>
+        <a href="sports.html" class="cat-pill"><i class="fas fa-futbol"></i> Live Sports</a>
+        <a href="movies.html" class="cat-pill"><i class="fas fa-film"></i> 4K Cinema</a>
+        <a href="originals.html" class="cat-pill"><i class="fas fa-crown"></i> OXO Originals</a>
+        <a href="media.html" class="cat-pill"><i class="fas fa-newspaper"></i> 24/7 News & Media</a>
+        <a href="watchlist.html" class="cat-pill"><i class="fas fa-download"></i> Offline Downloads</a>
+      </div>
+
+      <div class="live-ticker-badge">
+        <div class="ticker-dot"></div>
+        <div class="ticker-text">
+          <span>LIVE MATCH:</span> Real Madrid 2 - 1 Man City (78') • UEFA Champions League
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 1: LIVE & UPCOMING SPORTS
+       ========================================================================== -->
+  <section class="content-section">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-accent-bar"></div>
+        <div>
+          <h2 class="section-title">Live & Upcoming Sports</h2>
+          <p class="section-subtitle">Multi-angle 4K streams with real-time stadium audio and live stats</p>
+        </div>
+      </div>
+      <a href="sports.html" class="view-all-link">Explore Sports Stadium <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="content-row-wrapper">
+      <button class="row-arrow-btn prev" onclick="document.getElementById('sports-scroll-row').scrollBy({left: -400, behavior: 'smooth'})">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="content-scroll-row" id="sports-scroll-row">
+        <!-- Render Sports Cards dynamically -->
+      </div>
+
+      <button class="row-arrow-btn next" onclick="document.getElementById('sports-scroll-row').scrollBy({left: 400, behavior: 'smooth'})">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: TRENDING 4K CINEMA BLOCKBUSTERS
+       ========================================================================== -->
+  <section class="content-section">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-accent-bar"></div>
+        <div>
+          <h2 class="section-title">Trending Blockbusters & Cinema</h2>
+          <p class="section-subtitle">Premieres in IMAX Enhanced 4K Ultra HD & Dolby Atmos</p>
+        </div>
+      </div>
+      <a href="movies.html" class="view-all-link">View All Cinema <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="content-row-wrapper">
+      <button class="row-arrow-btn prev" onclick="document.getElementById('cinema-scroll-row').scrollBy({left: -350, behavior: 'smooth'})">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="content-scroll-row" id="cinema-scroll-row">
+        <!-- Render Movies Cards -->
+      </div>
+
+      <button class="row-arrow-btn next" onclick="document.getElementById('cinema-scroll-row').scrollBy({left: 350, behavior: 'smooth'})">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: SPOTLIGHT OXO ORIGINAL BANNER
+       ========================================================================== -->
+  <section class="highlight-banner-section">
+    <div class="highlight-banner-card">
+      <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=80" alt="Red Horizon" class="highlight-banner-bg">
+      <div class="highlight-banner-content">
+        <div class="hero-badges-row">
+          <span class="hero-badge-pill"><i class="fas fa-crown"></i> OXO EXCLUSIVE ORIGINAL</span>
+          <span class="hero-quality-pill">4K HDR</span>
+          <span class="hero-quality-pill">DOLBY VISION</span>
+        </div>
+        <h2 style="font-family:var(--font-heading); font-size:2.8rem; font-weight:900; margin-bottom:0.75rem; line-height:1.1;">
+          RED HORIZON: MARTIAN LEGACY
+        </h2>
+        <p style="color:#e0e0e0; font-size:1.05rem; line-height:1.6; margin-bottom:2rem;">
+          When the first human Martian colony unearths an ancient alien obelisk beneath the polar ice caps, the struggle for interplanetary sovereignty begins. Watch Season 1 in IMAX 4K.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="OXOPlayer.playItem(findMediaById('org-1'))">
+            <i class="fas fa-play"></i> Watch Episode 1
+          </button>
+          <a href="originals.html" class="btn-secondary">
+            <i class="fas fa-list"></i> View All Episodes
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: TOP 10 TODAY ON OXO XTREAM
+       ========================================================================== -->
+  <section class="content-section">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-accent-bar"></div>
+        <div>
+          <h2 class="section-title">Top 10 Streams Today</h2>
+          <p class="section-subtitle">The most watched cinema, sports events, and docuseries</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-row-wrapper">
+      <button class="row-arrow-btn prev" onclick="document.getElementById('top10-scroll-row').scrollBy({left: -350, behavior: 'smooth'})">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="content-scroll-row" id="top10-scroll-row">
+        <!-- Render Top 10 items with big numbers -->
+      </div>
+
+      <button class="row-arrow-btn next" onclick="document.getElementById('top10-scroll-row').scrollBy({left: 350, behavior: 'smooth'})">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: 24/7 GLOBAL MEDIA, NEWS & DOCUSERIES
+       ========================================================================== -->
+  <section class="content-section">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-accent-bar"></div>
+        <div>
+          <h2 class="section-title">Media, News & Documentaries</h2>
+          <p class="section-subtitle">24/7 live newsroom, tech investigations, and natural history specials</p>
+        </div>
+      </div>
+      <a href="media.html" class="view-all-link">Watch Media Hub <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="content-row-wrapper">
+      <button class="row-arrow-btn prev" onclick="document.getElementById('media-scroll-row').scrollBy({left: -350, behavior: 'smooth'})">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="content-scroll-row" id="media-scroll-row">
+        <!-- Render Media items -->
+      </div>
+
+      <button class="row-arrow-btn next" onclick="document.getElementById('media-scroll-row').scrollBy({left: 350, behavior: 'smooth'})">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: MULTI-DEVICE DOWNLOAD & WATCH OFFLINE
+       ========================================================================== -->
+  <section class="devices-section">
+    <div class="devices-container">
+      <div class="devices-left">
+        <span class="hero-badge-pill" style="margin-bottom:1rem;"><i class="fas fa-download"></i> DOWNLOAD & WATCH OFFLINE</span>
+        <h2>Watch Anywhere.<br><span style="color:var(--oxo-red-glow);">Stream Anytime on Any Screen.</span></h2>
+        <p>
+          Download your favorite movies, sports replays, and original series on mobile, tablet, or laptop. Enjoy crystal clear 4K HDR streams without internet connection.
+        </p>
+
+        <div class="device-features-grid">
+          <div class="device-feat-item">
+            <div class="device-feat-icon"><i class="fas fa-tv"></i></div>
+            <div class="device-feat-info">
+              <h4>Smart TV & Console</h4>
+              <p>Apple TV, Android TV, FireStick, PS5 & Xbox</p>
+            </div>
+          </div>
+          <div class="device-feat-item">
+            <div class="device-feat-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="device-feat-info">
+              <h4>iOS & Android</h4>
+              <p>Download directly to iPhone, iPad & Android devices</p>
+            </div>
+          </div>
+          <div class="device-feat-item">
+            <div class="device-feat-icon"><i class="fas fa-laptop"></i></div>
+            <div class="device-feat-info">
+              <h4>Mac & Windows PC</h4>
+              <p>PWA & Native desktop player with 120FPS support</p>
+            </div>
+          </div>
+          <div class="device-feat-item">
+            <div class="device-feat-icon"><i class="fas fa-volume-up"></i></div>
+            <div class="device-feat-info">
+              <h4>Dolby Spatial Audio</h4>
+              <p>Immersive 3D audio experience with headphones</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="device-app-badges">
+          <a href="#" class="store-badge-btn" onclick="OXOApp.showToast('OXO Xtream iOS App ready for download!', 'fa-apple'); return false;">
+            <i class="fab fa-apple"></i>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a href="#" class="store-badge-btn" onclick="OXOApp.showToast('OXO Xtream Android App ready for download!', 'fa-google-play'); return false;">
+            <i class="fab fa-google-play"></i>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="devices-mockup-wrapper">
+        <img src="assets/images/oxo-brand-poster.png" alt="OXO XTREAM Platform Showcase" class="devices-hero-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: PRICING & VIP PASS BANNER
+       ========================================================================== -->
+  <section class="pricing-section">
+    <div class="pricing-header">
+      <span class="hero-badge-pill" style="margin-bottom:1rem;"><i class="fas fa-gem"></i> FLEXIBLE SUBSCRIPTION</span>
+      <h2>Choose Your Streaming Tier</h2>
+      <p>Instant access to live sports, exclusive originals, 4K cinema and multi-device offline downloads.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Free Pass -->
+      <div class="pricing-card">
+        <div class="plan-name">FREE PASS</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price">$0</span>
+          <span class="plan-period">/ 7-Day Pass</span>
+        </div>
+        <ul class="plan-features-list">
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Standard HD (1080p) Streaming</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Watch on 1 Screen</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Select Cinema Titles</li>
+          <li class="plan-feature-item muted"><i class="fas fa-times"></i> Live Sports 4K Streams</li>
+          <li class="plan-feature-item muted"><i class="fas fa-times"></i> Offline Downloads</li>
+        </ul>
+        <button class="plan-cta-btn" onclick="OXOApp.openCheckout('FREE PASS', '$0.00')">Start 7-Day Trial</button>
+      </div>
+
+      <!-- Sports Pass -->
+      <div class="pricing-card">
+        <div class="plan-name">SPORTS PASS</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price">$8.99</span>
+          <span class="plan-period">/ month</span>
+        </div>
+        <ul class="plan-features-list">
+          <li class="plan-feature-item"><i class="fas fa-check"></i> All Live Sports (Football, F1, Cricket, NBA)</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> 4K 60FPS Low-Latency Feeds</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Multi-Camera Tactical Angles</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Watch on 2 Screens</li>
+          <li class="plan-feature-item muted"><i class="fas fa-times"></i> Full Originals Library</li>
+        </ul>
+        <button class="plan-cta-btn" onclick="OXOApp.openCheckout('SPORTS PASS', '$8.99 / month')">Get Sports Pass</button>
+      </div>
+
+      <!-- Xtream VIP -->
+      <div class="pricing-card featured">
+        <div class="plan-popular-badge">MOST POPULAR</div>
+        <div class="plan-name">XTREAM VIP ALL-ACCESS</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price">$14.99</span>
+          <span class="plan-period">/ month</span>
+        </div>
+        <ul class="plan-features-list">
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Everything in Sports + Cinema + Media</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Full OXO Originals in IMAX 4K HDR</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Dolby Atmos 7.1 Surround Sound</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Download & Watch on 4 Devices Offline</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> 100% Ad-Free Experience</li>
+        </ul>
+        <button class="plan-cta-btn" onclick="OXOApp.openCheckout('XTREAM VIP ALL-ACCESS', '$14.99 / month')">Activate Xtream VIP</button>
+      </div>
+
+      <!-- Annual Ultimate -->
+      <div class="pricing-card">
+        <div class="plan-name">ANNUAL ULTIMATE</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price">$119.99</span>
+          <span class="plan-period">/ year (Save 35%)</span>
+        </div>
+        <ul class="plan-features-list">
+          <li class="plan-feature-item"><i class="fas fa-check"></i> All VIP Xtream Benefits for 12 Months</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> Watch on up to 6 Screens Simultaneously</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> All Live PPV Championship Events Included</li>
+          <li class="plan-feature-item"><i class="fas fa-check"></i> VIP Fan Club Perks & Early Premiere</li>
+        </ul>
+        <button class="plan-cta-btn" onclick="OXOApp.openCheckout('ANNUAL ULTIMATE', '$119.99 / year')">Get Annual Pass</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="assets/images/logo.png" alt="OXO XTREAM" class="brand-logo-img">
+            <div class="brand-text">
+              <span class="brand-name">OXO XTREAM</span>
+              <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+            </div>
+          </a>
+          <p>
+            The next-generation ultra-high definition streaming ecosystem. Live global sporting spectacles, blockbuster movies, cutting-edge docuseries, and original cinematic epics.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sports.html">Live Sports Stadium</a></li>
+            <li><a href="movies.html">4K Cinema</a></li>
+            <li><a href="originals.html">OXO Originals</a></li>
+            <li><a href="media.html">Media & TV News</a></li>
+            <li><a href="watchlist.html">My Watchlist</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="pricing.html">Subscription Plans</a></li>
+            <li><a href="pricing.html">VIP Pass Benefits</a></li>
+            <li><a href="#">Supported Devices</a></li>
+            <li><a href="#">Speed & 4K Quality Test</a></li>
+            <li><a href="#">Gift Cards & Vouchers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Help & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Help Center / FAQ</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Preferences</a></li>
+            <li><a href="#">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-newsletter">
+          <h4>Stay in the Stream</h4>
+          <p>Subscribe for weekly release alerts, live match schedules, and VIP premiere invites.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); OXOApp.showToast('Subscribed to OXO Stream Alerts!', 'fa-envelope');">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 OXO XTREAM INC. All rights reserved. On-Demand. Experience. Originals.</div>
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-discord"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Initialize Home Page Content Rows
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Populate Sports Row
+      const sportsRow = document.getElementById('sports-scroll-row');
+      if (sportsRow && OTT_DATA.sports) {
+        sportsRow.innerHTML = OTT_DATA.sports.map(item => `
+          <div class="media-card sports-card" onclick="OXOPlayer.playItem(findMediaById('${item.id}'))">
+            <div class="sports-score-banner">
+              <span class="sports-match-status"><i class="fas fa-circle" style="font-size:0.5rem;"></i> ${item.status}</span>
+              <span style="color:var(--accent-gold); font-weight:700;">${item.timeOrScore}</span>
+            </div>
+            <div class="card-poster-wrap">
+              <img class="card-poster" src="${item.poster}" alt="${item.title}">
+              <span class="card-badge badge-live">${item.badge}</span>
+              <div class="card-play-overlay">
+                <div class="play-hover-btn"><i class="fas fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="sports-teams">${item.teams}</div>
+              <div class="card-title" style="font-size:0.85rem; color:var(--text-muted); font-weight:500;">${item.tournament}</div>
+              <div class="card-quick-actions" onclick="event.stopPropagation()">
+                <button class="card-btn-action" onclick="OXOApp.showQuickView('${item.id}')">
+                  <i class="fas fa-info-circle"></i> Stats
+                </button>
+                <button class="card-btn-action ${OXOApp.watchlist.includes(item.id) ? 'active' : ''}" data-watchlist-id="${item.id}" onclick="OXOApp.toggleWatchlist('${item.id}')">
+                  <i class="fas fa-plus"></i> Watchlist
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 2. Populate Cinema Row
+      const cinemaRow = document.getElementById('cinema-scroll-row');
+      if (cinemaRow && OTT_DATA.cinema) {
+        cinemaRow.innerHTML = OTT_DATA.cinema.map(item => `
+          <div class="media-card" onclick="OXOPlayer.playItem(findMediaById('${item.id}'))">
+            <div class="card-poster-wrap portrait">
+              <img class="card-poster" src="${item.poster}" alt="${item.title}">
+              <span class="card-badge">${item.badge}</span>
+              <span class="card-quality-tag">${item.quality}</span>
+              <div class="card-play-overlay">
+                <div class="play-hover-btn"><i class="fas fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">${item.title}</h4>
+              <div class="card-meta-line">
+                <span class="card-rating"><i class="fas fa-star"></i> ${item.rating}</span>
+                <span>${item.year}</span>
+                <span>${item.duration}</span>
+              </div>
+              <div class="card-quick-actions" onclick="event.stopPropagation()">
+                <button class="card-btn-action" onclick="OXOApp.showQuickView('${item.id}')">
+                  <i class="fas fa-info-circle"></i> Details
+                </button>
+                <button class="card-btn-action ${OXOApp.watchlist.includes(item.id) ? 'active' : ''}" data-watchlist-id="${item.id}" onclick="OXOApp.toggleWatchlist('${item.id}')">
+                  <i class="fas fa-plus"></i> Watchlist
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 3. Populate Top 10 Row
+      const top10Row = document.getElementById('top10-scroll-row');
+      if (top10Row) {
+        const topList = [
+          OTT_DATA.cinema[0],
+          OTT_DATA.sports[0],
+          OTT_DATA.originals[0],
+          OTT_DATA.cinema[1],
+          OTT_DATA.sports[2],
+          OTT_DATA.originals[1],
+          OTT_DATA.media[0],
+          OTT_DATA.cinema[2],
+          OTT_DATA.sports[3],
+          OTT_DATA.originals[2]
+        ].filter(Boolean);
+
+        top10Row.innerHTML = topList.map((item, idx) => `
+          <div class="top10-card" onclick="OXOPlayer.playItem(findMediaById('${item.id}'))">
+            <div class="top10-rank">${idx + 1}</div>
+            <div class="media-card" style="flex: 1;">
+              <div class="card-poster-wrap portrait">
+                <img class="card-poster" src="${item.poster || item.backdrop}" alt="${item.title}">
+                <span class="card-badge">${item.badge || item.category}</span>
+                <div class="card-play-overlay">
+                  <div class="play-hover-btn"><i class="fas fa-play"></i></div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">${item.title}</h4>
+                <div class="card-meta-line">
+                  <span class="card-rating"><i class="fas fa-star"></i> ${item.rating}</span>
+                  <span>${item.year || '2026'}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 4. Populate Media & Docuseries Row
+      const mediaRow = document.getElementById('media-scroll-row');
+      if (mediaRow && OTT_DATA.media) {
+        mediaRow.innerHTML = OTT_DATA.media.map(item => `
+          <div class="media-card" style="flex:0 0 300px;" onclick="OXOPlayer.playItem(findMediaById('${item.id}'))">
+            <div class="card-poster-wrap">
+              <img class="card-poster" src="${item.poster}" alt="${item.title}">
+              <span class="card-badge">${item.badge}</span>
+              <span class="card-quality-tag">${item.quality}</span>
+              <div class="card-play-overlay">
+                <div class="play-hover-btn"><i class="fas fa-play"></i></div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">${item.title}</h4>
+              <div class="card-meta-line">
+                <span class="card-rating"><i class="fas fa-star"></i> ${item.rating}</span>
+                <span>${item.duration}</span>
+              </div>
+              <div class="card-quick-actions" onclick="event.stopPropagation()">
+                <button class="card-btn-action" onclick="OXOApp.showQuickView('${item.id}')">
+                  <i class="fas fa-info-circle"></i> Info
+                </button>
+                <button class="card-btn-action ${OXOApp.watchlist.includes(item.id) ? 'active' : ''}" data-watchlist-id="${item.id}" onclick="OXOApp.toggleWatchlist('${item.id}')">
+                  <i class="fas fa-plus"></i> Watchlist
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>
