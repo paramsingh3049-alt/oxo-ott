@@ -21,14 +21,19 @@
        CINEMATIC INTRO ANIMATION
        ========================================================================== -->
   <div id="oxo-intro" class="oxo-intro">
-    <div class="intro-flash"></div>
-    <div class="intro-shockwave"></div>
-    <div class="intro-particles">
-      <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="tiny-red-light"></div>
+    <div class="energy-rays">
+      <div class="ray ray-1"></div>
+      <div class="ray ray-2"></div>
+      <div class="ray ray-3"></div>
+      <div class="ray ray-4"></div>
     </div>
-    <div class="intro-streaks">
-      <div class="streak streak-1"></div>
-      <div class="streak streak-2"></div>
+    <div class="energy-ring"></div>
+    <div class="circular-energy-field"></div>
+    <div class="electric-waves"></div>
+    <div class="intro-particles">
+      <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+      <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
     <img src="assets/images/logo-xtream.png" alt="OXO XTREAM" class="intro-logo">
   </div>
@@ -36,9 +41,12 @@
     document.body.style.overflow = 'hidden';
     setTimeout(() => {
       const intro = document.getElementById('oxo-intro');
-      if (intro) intro.remove();
-      document.body.style.overflow = '';
-    }, 4500);
+      if (intro) intro.classList.add('fade-out');
+      setTimeout(() => { 
+        if (intro) intro.remove(); 
+        document.body.style.overflow = ''; 
+      }, 600);
+    }, 4000);
   </script>
 
   <!-- ==========================================================================
