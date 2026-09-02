@@ -24,9 +24,9 @@
   width: 100vw;
   height: 100vh;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle at center, #ffffff 0%, rgba(229,9,20,0.8) 30%, #000000 70%);
+  background: radial-gradient(circle at center, #ffffff 0%, rgba(229,9,20,0.9) 20%, #000000 80%);
   opacity: 0;
-  animation: introFlashAnim 0.25s cubic-bezier(0.1, 0.8, 0.3, 1) 0.2s forwards;
+  animation: introFlashAnim 0.3s cubic-bezier(0.1, 0.8, 0.3, 1) 0.1s forwards;
   mix-blend-mode: screen;
 }
 
@@ -38,10 +38,10 @@
   height: 10px;
   border-radius: 50%;
   border: 4px solid #ffffff;
-  box-shadow: 0 0 60px 20px rgba(229,9,20,0.8), inset 0 0 40px rgba(229,9,20,0.6);
+  box-shadow: 0 0 100px 40px rgba(229,9,20,1), inset 0 0 80px rgba(229,9,20,0.8);
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  animation: introShockwaveAnim 0.7s cubic-bezier(0.1, 0.8, 0.2, 1) 0.3s forwards;
+  animation: introShockwaveAnim 0.7s cubic-bezier(0.1, 0.8, 0.2, 1) 0.15s forwards;
 }
 
 .intro-logo {
@@ -49,11 +49,11 @@
   width: 50vw;
   object-fit: contain;
   opacity: 0;
-  transform: scale(0.1);
+  transform: scale(4);
   position: relative;
   z-index: 10;
   image-rendering: high-quality;
-  animation: introLogoReveal 3.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  animation: introLogoReveal 3.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
 .intro-streaks {
@@ -66,20 +66,21 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
-  animation: introStreaksReveal 2s ease 0.3s forwards;
+  animation: introStreaksReveal 2.5s ease 0.2s forwards;
 }
 
 .streak {
   position: absolute;
   width: 150vw;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(229,9,20,0.8), #ffffff, rgba(229,9,20,0.8), transparent);
-  box-shadow: 0 0 15px rgba(229,9,20,1);
-  opacity: 0.5;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(229,9,20,1), #ffffff, rgba(229,9,20,1), transparent);
+  box-shadow: 0 0 25px rgba(229,9,20,1);
+  opacity: 0.8;
 }
 
-.streak-1 { transform: rotate(12deg); }
-.streak-2 { transform: rotate(-12deg); }
+.streak-1 { transform: rotate(15deg); }
+.streak-2 { transform: rotate(-15deg); }
+.streak-3 { transform: rotate(0deg); opacity: 0.4; height: 1px; }
 
 .intro-particles {
   position: absolute;
@@ -92,21 +93,21 @@
 
 .intro-particles .particle {
   position: absolute;
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
   background: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 0 12px 2px rgba(229,9,20,1);
+  box-shadow: 0 0 15px 3px rgba(229,9,20,1);
   top: 50%;
   left: 50%;
   opacity: 0;
 }
 
-.intro-particles .particle:nth-child(1) { animation: particleAnim 0.8s ease-out 0.3s forwards; --tx: 300px; --ty: -200px; }
-.intro-particles .particle:nth-child(2) { animation: particleAnim 1.0s ease-out 0.35s forwards; --tx: -350px; --ty: -150px; }
-.intro-particles .particle:nth-child(3) { animation: particleAnim 0.9s ease-out 0.4s forwards; --tx: 250px; --ty: 250px; }
-.intro-particles .particle:nth-child(4) { animation: particleAnim 1.1s ease-out 0.3s forwards; --tx: -280px; --ty: 280px; }
-.intro-particles .particle:nth-child(5) { animation: particleAnim 1.2s ease-out 0.45s forwards; --tx: 0px; --ty: -350px; }
+.intro-particles .particle:nth-child(1) { animation: particleAnim 0.8s ease-out 0.2s forwards; --tx: 400px; --ty: -250px; }
+.intro-particles .particle:nth-child(2) { animation: particleAnim 1.0s ease-out 0.25s forwards; --tx: -450px; --ty: -200px; }
+.intro-particles .particle:nth-child(3) { animation: particleAnim 0.9s ease-out 0.22s forwards; --tx: 350px; --ty: 300px; }
+.intro-particles .particle:nth-child(4) { animation: particleAnim 1.1s ease-out 0.28s forwards; --tx: -380px; --ty: 350px; }
+.intro-particles .particle:nth-child(5) { animation: particleAnim 1.2s ease-out 0.3s forwards; --tx: 0px; --ty: -450px; }
 
 @keyframes introFadeOut {
   0% { opacity: 1; visibility: visible; }
@@ -114,26 +115,31 @@
 }
 
 @keyframes introFlashAnim {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(2); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(4); }
 }
 
 @keyframes introShockwaveAnim {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; border-width: 15px; }
-  100% { transform: translate(-50%, -50%) scale(150); opacity: 0; border-width: 0; }
+  0% { transform: translate(-50%, -50%) scale(0.1); opacity: 1; border-width: 25px; }
+  100% { transform: translate(-50%, -50%) scale(200); opacity: 0; border-width: 0; }
 }
 
 @keyframes introLogoReveal {
   0% { 
-    transform: scale(0.01); 
+    transform: scale(4); 
     opacity: 0; 
-    filter: drop-shadow(0 0 0px rgba(229,9,20,0)) brightness(2.5);
+    filter: drop-shadow(0 0 0px rgba(229,9,20,0)) brightness(3);
+  }
+  8% { 
+    transform: scale(0.9); 
+    opacity: 1; 
+    filter: drop-shadow(0 0 80px rgba(229,9,20,1)) brightness(1.5);
   }
   15% { 
-    transform: scale(1.15); 
+    transform: scale(1.05); 
     opacity: 1; 
-    filter: drop-shadow(0 0 50px rgba(229,9,20,0.7)) brightness(1.3);
+    filter: drop-shadow(0 0 40px rgba(229,9,20,0.8)) brightness(1.2);
   }
   100% { 
     transform: scale(1); 
@@ -144,11 +150,11 @@
 
 @keyframes introStreaksReveal {
   0% { opacity: 0; transform: scaleY(0); }
-  20% { opacity: 1; transform: scaleY(2); }
-  100% { opacity: 0; transform: scaleY(0.5); }
+  15% { opacity: 1; transform: scaleY(3); }
+  100% { opacity: 0; transform: scaleY(0.2); }
 }
 
 @keyframes particleAnim {
-  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); }
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.5); }
 }
