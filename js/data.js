@@ -499,8 +499,8 @@ const OTT_DATA = {
     {
       id: "plan-free",
       name: "FREE PASS",
-      priceMonthly: "$0",
-      priceAnnual: "$0",
+      priceMonthly: "₹9",
+      priceAnnual: "₹9",
       period: "7-Day Trial",
       features: [
         "Access to Select Cinema Titles",
@@ -514,8 +514,8 @@ const OTT_DATA = {
     {
       id: "plan-sports",
       name: "SPORTS PASS",
-      priceMonthly: "$8.99",
-      priceAnnual: "$69.99",
+      priceMonthly: "₹149",
+      priceAnnual: "₹1,499",
       period: "/month",
       features: [
         "All Live Sports (Football, F1, Cricket, NBA)",
@@ -530,8 +530,8 @@ const OTT_DATA = {
     {
       id: "plan-vip",
       name: "XTREAM VIP ALL-ACCESS",
-      priceMonthly: "$14.99",
-      priceAnnual: "$119.99",
+      priceMonthly: "₹299",
+      priceAnnual: "₹2,999",
       period: "/month",
       badge: "MOST POPULAR",
       features: [
@@ -548,8 +548,8 @@ const OTT_DATA = {
     {
       id: "plan-annual",
       name: "ANNUAL ULTIMATE",
-      priceMonthly: "$22.99",
-      priceAnnual: "$179.99",
+      priceMonthly: "₹1,799",
+      priceAnnual: "₹1,999",
       period: "/month billed annually",
       badge: "SAVE 35%",
       features: [
