@@ -1,0 +1,154 @@
+/* ==========================================================================
+   CINEMATIC INTRO ANIMATION
+   ========================================================================== */
+.oxo-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  animation: introFadeOut 0.8s ease 3.5s forwards;
+}
+
+.intro-flash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, #ffffff 0%, rgba(229,9,20,0.8) 30%, #000000 70%);
+  opacity: 0;
+  animation: introFlashAnim 0.25s cubic-bezier(0.1, 0.8, 0.3, 1) 0.2s forwards;
+  mix-blend-mode: screen;
+}
+
+.intro-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 60px 20px rgba(229,9,20,0.8), inset 0 0 40px rgba(229,9,20,0.6);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  animation: introShockwaveAnim 0.7s cubic-bezier(0.1, 0.8, 0.2, 1) 0.3s forwards;
+}
+
+.intro-logo {
+  max-width: 800px;
+  width: 50vw;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.1);
+  position: relative;
+  z-index: 10;
+  image-rendering: high-quality;
+  animation: introLogoReveal 3.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.intro-streaks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: introStreaksReveal 2s ease 0.3s forwards;
+}
+
+.streak {
+  position: absolute;
+  width: 150vw;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(229,9,20,0.8), #ffffff, rgba(229,9,20,0.8), transparent);
+  box-shadow: 0 0 15px rgba(229,9,20,1);
+  opacity: 0.5;
+}
+
+.streak-1 { transform: rotate(12deg); }
+.streak-2 { transform: rotate(-12deg); }
+
+.intro-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.intro-particles .particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 2px rgba(229,9,20,1);
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+}
+
+.intro-particles .particle:nth-child(1) { animation: particleAnim 0.8s ease-out 0.3s forwards; --tx: 300px; --ty: -200px; }
+.intro-particles .particle:nth-child(2) { animation: particleAnim 1.0s ease-out 0.35s forwards; --tx: -350px; --ty: -150px; }
+.intro-particles .particle:nth-child(3) { animation: particleAnim 0.9s ease-out 0.4s forwards; --tx: 250px; --ty: 250px; }
+.intro-particles .particle:nth-child(4) { animation: particleAnim 1.1s ease-out 0.3s forwards; --tx: -280px; --ty: 280px; }
+.intro-particles .particle:nth-child(5) { animation: particleAnim 1.2s ease-out 0.45s forwards; --tx: 0px; --ty: -350px; }
+
+@keyframes introFadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes introFlashAnim {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+  30% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(3); }
+}
+
+@keyframes introShockwaveAnim {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; border-width: 15px; }
+  100% { transform: translate(-50%, -50%) scale(150); opacity: 0; border-width: 0; }
+}
+
+@keyframes introLogoReveal {
+  0% { 
+    transform: scale(0.01); 
+    opacity: 0; 
+    filter: drop-shadow(0 0 0px rgba(229,9,20,0)) brightness(2.5);
+  }
+  15% { 
+    transform: scale(1.15); 
+    opacity: 1; 
+    filter: drop-shadow(0 0 50px rgba(229,9,20,0.7)) brightness(1.3);
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+    filter: drop-shadow(0 0 20px rgba(229,9,20,0.4)) brightness(1);
+  }
+}
+
+@keyframes introStreaksReveal {
+  0% { opacity: 0; transform: scaleY(0); }
+  20% { opacity: 1; transform: scaleY(2); }
+  100% { opacity: 0; transform: scaleY(0.5); }
+}
+
+@keyframes particleAnim {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); }
+}
