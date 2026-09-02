@@ -409,7 +409,8 @@ const OXOApp = {
           const matchCategory = item.category && item.category.toLowerCase().includes(q);
           const matchGenres = item.genres && item.genres.some(g => g.toLowerCase().includes(q));
           const matchCast = item.cast && item.cast.some(c => c.toLowerCase().includes(q));
-          return matchTitle || matchCategory || matchGenres || matchCast;
+          const matchLanguage = item.language && item.language.toLowerCase().includes(q);
+          return matchTitle || matchCategory || matchGenres || matchCast || matchLanguage;
         });
 
     if (filtered.length === 0) {

@@ -193,45 +193,7 @@ const OXOPlayer = {
 
   playItem(item) {
     if (!item) return;
-    this.createPlayerModal();
-    this.isOpen = true;
-
-    this.titleDisplay.innerText = item.title;
-    const genresElem = document.getElementById('player-item-genres');
-    if (genresElem) genresElem.innerText = Array.isArray(item.genres) ? item.genres.join(', ') : (item.category || 'OXO Stream');
-    
-    const ratingElem = document.getElementById('player-item-rating');
-    if (ratingElem) ratingElem.innerHTML = `<i class="fas fa-star" style="color:var(--accent-gold)"></i> ${item.rating || '9.8'}`;
-
-    const yearElem = document.getElementById('player-item-year');
-    if (yearElem) yearElem.innerText = item.year || item.status || '2026';
-
-    if (this.badgeDisplay) {
-      this.badgeDisplay.innerText = item.quality || '4K ULTRA HD';
-    }
-
-    // Watchlist trigger in player
-    const addWatchlistBtn = document.getElementById('player-add-watchlist-btn');
-    if (addWatchlistBtn) {
-      addWatchlistBtn.onclick = () => {
-        if (window.OXOApp) window.OXOApp.toggleWatchlist(item.id);
-      };
-    }
-
-    const videoSrc = item.videoUrl || item.trailerUrl || 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-    this.video.src = videoSrc;
-    this.overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    this.video.play().then(() => {
-      this.playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    }).catch(() => {
-      this.playBtn.innerHTML = '<i class="fas fa-play"></i>';
-    });
-
-    if (window.OXOApp) {
-      window.OXOApp.showToast(`Now Streaming: "${item.title}" in 4K HDR`, 'fa-play-circle');
-    }
+    window.location.href = `watch.html?id=${item.id}`;
   },
 
   togglePlay() {

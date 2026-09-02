@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch | OXO XTREAM</title>
+  
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    body { background: var(--bg-main); color: #fff; padding-top: 70px; }
+    
+    .watch-player-section {
+      width: 100%;
+      background: #000;
+      position: relative;
+    }
+    
+    .watch-player-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      aspect-ratio: 16/9;
+      position: relative;
+      background: #000;
+    }
+    
+    .watch-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    
+    .watch-meta-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+    }
+    
+    @media(max-width: 900px) {
+      .watch-meta-section { grid-template-columns: 1fr; }
+    }
+    
+    .watch-meta-main h1 {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .watch-tags {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .watch-badge {
+      background: var(--oxo-red);
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    .watch-description {
+      color: #d1d5db;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+    
+    .watch-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .watch-action-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--oxo-border);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .watch-action-btn:hover {
+      background: var(--oxo-red);
+      border-color: var(--oxo-red);
+    }
+    
+    .watch-action-btn.active {
+      color: var(--oxo-red-glow);
+      border-color: var(--oxo-red-glow);
+    }
+    
+    .watch-meta-sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--oxo-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    
+    .sidebar-heading {
+      font-family: var(--font-heading);
+      margin-bottom: 1rem;
+      color: var(--oxo-red-glow);
+    }
+    
+    .related-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .related-card {
+      display: flex;
+      gap: 1rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .related-card:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .related-thumb {
+      width: 140px;
+      height: 80px;
+      object-fit: cover;
+    }
+    
+    .related-info {
+      padding: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .related-title {
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .related-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    
+    .watch-error {
+      display: none;
+      text-align: center;
+      padding: 5rem 1rem;
+      background: #000;
+    }
+    
+    .watch-error.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="OXO XTREAM Logo" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-name">OXO XTREAM</span>
+          <span class="brand-tagline">SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS</span>
+        </div>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="sports.html" class="nav-link"><i class="fas fa-futbol"></i> Sports <span class="nav-badge-live">LIVE</span></a></li>
+        <li><a href="movies.html" class="nav-link"><i class="fas fa-film"></i> Movies</a></li>
+        <li><a href="originals.html" class="nav-link"><i class="fas fa-crown"></i> Originals</a></li>
+        <li><a href="media.html" class="nav-link"><i class="fas fa-tv"></i> Media & TV</a></li>
+        <li><a href="pricing.html" class="nav-link"><i class="fas fa-gem"></i> VIP Plans</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="search-btn search-trigger-btn" title="Search Content">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="watchlist.html" class="watchlist-nav-btn" title="My Watchlist">
+          <i class="fas fa-bookmark"></i>
+          <span class="nav-badge-count watchlist-count-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="watch-error" id="watch-error">
+    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--oxo-red); margin-bottom: 1rem;"></i>
+    <h2>Video currently unavailable.</h2>
+    <p style="color: var(--text-muted); margin-top: 0.5rem;">Please check the URL or try again later.</p>
+    <a href="index.html" class="btn-primary" style="display: inline-block; margin-top: 2rem;">Return Home</a>
+  </div>
+
+  <section class="watch-player-section" id="watch-content" style="display:none;">
+    <div class="watch-player-container custom-video-wrap" id="watch-video-wrap">
+      <video id="watch-video" class="watch-video" playsinline></video>
+      <div id="resume-prompt" style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.8); padding:1.5rem; border-radius:12px; text-align:center; z-index:10; border: 1px solid var(--oxo-red);">
+        <h3 style="margin-bottom:1rem;">Continue Watching?</h3>
+        <div style="display:flex; gap:1rem;">
+          <button id="resume-yes" class="btn-primary"><i class="fas fa-play"></i> Resume</button>
+          <button id="resume-no" class="btn-secondary"><i class="fas fa-redo"></i> Start Over</button>
+        </div>
+      </div>
+      <div class="player-controls-bar" id="watch-controls">
+        <div class="player-progress-container" id="watch-progress-bar">
+          <div class="player-progress-filled" id="watch-progress-filled"></div>
+        </div>
+        <div class="player-bottom-controls">
+          <div class="player-left-group">
+            <button class="player-ctrl-btn" id="watch-play-btn"><i class="fas fa-play"></i></button>
+            <button class="player-ctrl-btn" id="watch-rewind"><i class="fas fa-undo"></i></button>
+            <button class="player-ctrl-btn" id="watch-forward"><i class="fas fa-redo"></i></button>
+            <button class="player-ctrl-btn" id="watch-volume"><i class="fas fa-volume-up"></i></button>
+            <span class="player-time-text" id="watch-time">00:00 / 00:00</span>
+          </div>
+          <div class="player-right-group">
+            <span class="player-quality-badge" id="watch-quality">4K ULTRA HD</span>
+            <button class="player-ctrl-btn" id="watch-speed">1.0x</button>
+            <button class="player-ctrl-btn" id="watch-pip"><i class="fas fa-clone"></i></button>
+            <button class="player-ctrl-btn" id="watch-fullscreen"><i class="fas fa-expand"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="watch-meta-section" id="watch-meta" style="display:none;">
+    <div class="watch-meta-main">
+      <h1 id="meta-title">Title</h1>
+      <div class="watch-tags" id="meta-tags"></div>
+      <p class="watch-description" id="meta-desc">Description</p>
+      <div class="watch-actions">
+        <button class="watch-action-btn" id="btn-watchlist" onclick="toggleWatchlistBtn()"><i class="fas fa-plus"></i> Add to Watchlist</button>
+        <button class="watch-action-btn" onclick="this.classList.toggle('active')"><i class="fas fa-thumbs-up"></i> Like</button>
+        <button class="watch-action-btn" onclick="shareVideo()"><i class="fas fa-share-square"></i> Share</button>
+      </div>
+    </div>
+    <div class="watch-meta-sidebar">
+      <h3 class="sidebar-heading">MORE LIKE THIS</h3>
+      <div class="related-grid" id="related-grid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom">
+        <div>© 2026 OXO XTREAM VIP. All rights reserved. Premium Streaming Ecosystem.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/watch.js"></script>
+</body>
+</html>

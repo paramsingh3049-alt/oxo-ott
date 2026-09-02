@@ -8,7 +8,7 @@ const OTT_DATA = {
   heroSlides: [
     {
       id: "slide-1",
-      category: "CINEMA",
+      category: "Cinema", language: "English", type: "Movie", trending: true, language: "English", type: "Movie", trending: false,
       badge: "EXCLUSIVE 4K PREMIERE",
       title: "CYBER PULSE 2099",
       tagline: "The boundary between human and synthetic is about to shatter.",
@@ -30,7 +30,7 @@ const OTT_DATA = {
     },
     {
       id: "slide-2",
-      category: "SPORTS",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "LIVE & EXCLUSIVE",
       title: "CHAMPIONS DERBY: CLASH OF TITANS",
       tagline: "Madrid Knights vs Manchester Red Devils • Grand European Final",
@@ -53,7 +53,7 @@ const OTT_DATA = {
     },
     {
       id: "slide-3",
-      category: "ORIGINALS",
+      category: "OXO Originals", language: "English", type: "Original", trending: true,
       badge: "OXO ORIGINAL BLOCKBUSTER",
       title: "RED HORIZON: MARTIAN LEGACY",
       tagline: "Survival was only the beginning. The conquest begins now.",
@@ -75,7 +75,7 @@ const OTT_DATA = {
     },
     {
       id: "slide-4",
-      category: "SPORTS",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "GRAND PRIX LIVE",
       title: "F1 NIGHT RACING: MONACO GP",
       tagline: "Speed, precision, and zero margin for error under the neon lights.",
@@ -98,7 +98,7 @@ const OTT_DATA = {
     },
     {
       id: "slide-5",
-      category: "MEDIA",
+      category: "Media & TV", language: "English", type: "Show", trending: true,
       badge: "INVESTIGATIVE DOCUSERIES",
       title: "THE DEEP WEB CHRONICLES",
       tagline: "Behind the encrypted gates of digital shadows.",
@@ -130,7 +130,7 @@ const OTT_DATA = {
       timeOrScore: "78' | MAD 2 - 1 MCI",
       teams: "Real Madrid vs Man City",
       venue: "Wembley Stadium, London",
-      category: "Sports",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "LIVE 4K",
       rating: "9.9/10",
       poster: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80",
@@ -146,7 +146,7 @@ const OTT_DATA = {
       timeOrScore: "Starts in 2h 15m",
       teams: "India vs Australia",
       venue: "Melbourne Cricket Ground",
-      category: "Sports",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "UPCOMING",
       rating: "9.8/10",
       poster: "https://images.unsplash.com/photo-1531415074868-036b1c5f53ec?auto=format&fit=crop&w=600&q=80",
@@ -162,7 +162,7 @@ const OTT_DATA = {
       timeOrScore: "Q3 • 3 Mins Left",
       teams: "Red Bull vs Ferrari vs McLaren",
       venue: "Lusail International Circuit",
-      category: "Sports",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "LIVE 60FPS",
       rating: "9.7/10",
       poster: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80",
@@ -178,7 +178,7 @@ const OTT_DATA = {
       timeOrScore: "Tomorrow • 8:30 PM EST",
       teams: "Boston Celtics vs LA Lakers",
       venue: "TD Garden, Boston",
-      category: "Sports",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "DECIDER",
       rating: "9.9/10",
       poster: "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=600&q=80",
@@ -194,7 +194,7 @@ const OTT_DATA = {
       timeOrScore: "Main Card • Round 3",
       teams: "Pereira vs Adesanya III",
       venue: "T-Mobile Arena, Las Vegas",
-      category: "Sports",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "PPV LIVE",
       rating: "9.8/10",
       poster: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80",
@@ -210,14 +210,79 @@ const OTT_DATA = {
       timeOrScore: "Centre Court • 2:00 PM BST",
       teams: "Alcaraz vs Sinner",
       venue: "All England Lawn Tennis Club",
-      category: "Sports",
+      category: "Sports", language: "English", type: "Live", trending: true, language: "English", type: "Video", trending: true,
       badge: "GRAND SLAM",
       rating: "9.9/10",
       poster: "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=600&q=80",
       backdrop: "https://images.unsplash.com/photo-1530915365347-e35b749a0381?auto=format&fit=crop&w=1200&q=80",
       description: "The two giants of the modern era battle for tennis supremacy on the hallowed grass.",
       videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4"
+    },
+
+    {
+        "id": "sp-7",
+        "title": "MCL T20 – Match Highlights",
+        "category": "Sports",
+        "genres": [
+            "Cricket",
+            "Highlights"
+        ],
+        "duration": "15m",
+        "year": "2026",
+        "language": "English",
+        "type": "Video",
+        "badge": "HIGHLIGHTS",
+        "rating": "9.0",
+        "quality": "1080p",
+        "poster": "https://images.unsplash.com/photo-1531415074868-036b1c5f53ec?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&q=80",
+        "description": "Catch all the explosive sixes and wickets from the latest MCL T20 clash.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        "trending": true
+    },
+    {
+        "id": "sp-8",
+        "title": "Kabaddi – Top Plays",
+        "category": "Sports",
+        "genres": [
+            "Kabaddi",
+            "Highlights"
+        ],
+        "duration": "10m",
+        "year": "2026",
+        "language": "Hindi",
+        "type": "Video",
+        "badge": "ACTION",
+        "rating": "9.2",
+        "quality": "1080p",
+        "poster": "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=1200&q=80",
+        "description": "The most stunning raids and tackles of the season.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        "trending": false
+    },
+    {
+        "id": "sp-9",
+        "title": "Football – Match Highlights",
+        "category": "Sports",
+        "genres": [
+            "Football",
+            "Highlights"
+        ],
+        "duration": "12m",
+        "year": "2026",
+        "language": "English",
+        "type": "Video",
+        "badge": "REPLAY",
+        "rating": "8.8",
+        "quality": "4K",
+        "poster": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1200&q=80",
+        "description": "All the goals and key moments from the weekend derby.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        "trending": true
     }
+
   ],
 
   // Cinema & Blockbusters Category
@@ -225,12 +290,56 @@ const OTT_DATA = {
     {
       id: "mv-1",
       title: "Shadows of Elysium",
-      category: "Cinema",
+      category: "Cinema", language: "English", type: "Movie", trending: true, language: "English", type: "Movie", trending: false,
       badge: "BLOCKBUSTER",
       rating: "8.9/10",
       year: "2026",
       duration: "2h 24m",
-      genres: ["Action", "Neo-Noir", "Crime"],
+      genres: ["Action", "Neo-Noir", "Crime",
+
+    {
+        "id": "mv-7",
+        "title": "Featured Movie Trailer",
+        "category": "Cinema",
+        "genres": [
+            "Action",
+            "Trailer"
+        ],
+        "duration": "2m",
+        "year": "2026",
+        "language": "English",
+        "type": "Movie",
+        "badge": "TRAILER",
+        "rating": "N/A",
+        "quality": "4K",
+        "poster": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1200&q=80",
+        "description": "The official trailer for the most anticipated action blockbuster of the year.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        "trending": true
+    },
+    {
+        "id": "mv-8",
+        "title": "Indian Cinema Spotlight",
+        "category": "Cinema",
+        "genres": [
+            "Drama",
+            "Bollywood"
+        ],
+        "duration": "2h 15m",
+        "year": "2026",
+        "language": "Hindi",
+        "type": "Movie",
+        "badge": "SPOTLIGHT",
+        "rating": "8.9",
+        "quality": "1080p",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
+        "description": "A curated selection showcasing the best of modern Indian storytelling.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        "trending": false
+    }
+],
       quality: "4K UHD",
       poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80",
       backdrop: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
@@ -241,7 +350,7 @@ const OTT_DATA = {
     {
       id: "mv-2",
       title: "Interstellar Abyss",
-      category: "Cinema",
+      category: "Cinema", language: "English", type: "Movie", trending: true, language: "English", type: "Movie", trending: false,
       badge: "IMAX 4K",
       rating: "9.2/10",
       year: "2025",
@@ -257,7 +366,7 @@ const OTT_DATA = {
     {
       id: "mv-3",
       title: "Vengeance in Kyoto",
-      category: "Cinema",
+      category: "Cinema", language: "English", type: "Movie", trending: true, language: "English", type: "Movie", trending: false,
       badge: "TOP RATED",
       rating: "9.1/10",
       year: "2026",
@@ -273,7 +382,7 @@ const OTT_DATA = {
     {
       id: "mv-4",
       title: "The Quantum Enigma",
-      category: "Cinema",
+      category: "Cinema", language: "English", type: "Movie", trending: true, language: "English", type: "Movie", trending: false,
       badge: "PREMIERE",
       rating: "8.8/10",
       year: "2026",
@@ -289,7 +398,7 @@ const OTT_DATA = {
     {
       id: "mv-5",
       title: "Apex Predator: Sahara",
-      category: "Cinema",
+      category: "Cinema", language: "English", type: "Movie", trending: true, language: "English", type: "Movie", trending: false,
       badge: "ACTION HIT",
       rating: "8.7/10",
       year: "2026",
@@ -305,7 +414,7 @@ const OTT_DATA = {
     {
       id: "mv-6",
       title: "The Silent Orbit",
-      category: "Cinema",
+      category: "Cinema", language: "English", type: "Movie", trending: true, language: "English", type: "Movie", trending: false,
       badge: "CRITIC PICK",
       rating: "9.3/10",
       year: "2026",
@@ -325,12 +434,56 @@ const OTT_DATA = {
     {
       id: "med-1",
       title: "OXO Global 24/7 Live Newsroom",
-      category: "Media",
+      category: "Media & TV", language: "English", type: "Show", trending: true,
       badge: "LIVE BROADCAST",
       rating: "LIVE",
       year: "2026 Live",
       duration: "Continuous",
-      genres: ["News", "World Affairs", "Live Feed", "Analysis"],
+      genres: ["News", "World Affairs", "Live Feed", "Analysis",
+
+    {
+        "id": "med-5",
+        "title": "OXO Entertainment News",
+        "category": "Media & TV",
+        "genres": [
+            "News",
+            "Entertainment"
+        ],
+        "duration": "30m",
+        "year": "2026",
+        "language": "English",
+        "type": "Show",
+        "badge": "LIVE",
+        "rating": "8.5",
+        "quality": "1080p",
+        "poster": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1200&q=80",
+        "description": "The latest updates from Hollywood and global pop culture.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+        "trending": true
+    },
+    {
+        "id": "med-6",
+        "title": "Sports Talk – Episode 01",
+        "category": "Media & TV",
+        "genres": [
+            "Talk Show",
+            "Sports"
+        ],
+        "duration": "45m",
+        "year": "2026",
+        "language": "English",
+        "type": "Show",
+        "badge": "NEW",
+        "rating": "9.0",
+        "quality": "1080p",
+        "poster": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&q=80",
+        "description": "Deep dive analysis of the weekend games with our expert panel.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+        "trending": false
+    }
+],
       quality: "1080p 60FPS",
       poster: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80",
       backdrop: "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80",
@@ -340,7 +493,7 @@ const OTT_DATA = {
     {
       id: "med-2",
       title: "Wild Earth: Secrets of Ocean Trenches",
-      category: "Media",
+      category: "Media & TV", language: "English", type: "Show", trending: true,
       badge: "NATURAL HISTORY",
       rating: "9.9/10",
       year: "2026",
@@ -355,7 +508,7 @@ const OTT_DATA = {
     {
       id: "med-3",
       title: "Silicon Singularity: The AI Dawn",
-      category: "Media",
+      category: "Media & TV", language: "English", type: "Show", trending: true,
       badge: "TECH INSIGHT",
       rating: "9.5/10",
       year: "2026",
@@ -370,7 +523,7 @@ const OTT_DATA = {
     {
       id: "med-4",
       title: "The Soundwave: Global Music Festivals",
-      category: "Media",
+      category: "Media & TV", language: "English", type: "Show", trending: true,
       badge: "ENTERTAINMENT",
       rating: "9.3/10",
       year: "2026",
@@ -389,12 +542,77 @@ const OTT_DATA = {
     {
       id: "org-1",
       title: "Red Horizon: Martian Legacy",
-      category: "Originals",
+      category: "OXO Originals", language: "English", type: "Original", trending: true,
       badge: "OXO ORIGINAL",
       rating: "9.6/10",
       year: "2026",
       seasons: "Season 1 • 8 Episodes",
-      genres: ["Sci-Fi", "Drama", "Originals"],
+      genres: ["Sci-Fi", "Drama", "Originals",
+
+    {
+        "id": "org-5",
+        "title": "OXO Originals – Official Trailer",
+        "category": "OXO Originals",
+        "genres": [
+            "Trailer",
+            "Showcase"
+        ],
+        "duration": "3m",
+        "year": "2026",
+        "language": "English",
+        "type": "Original",
+        "badge": "PREMIERE",
+        "rating": "9.8",
+        "quality": "4K UHD",
+        "poster": "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=80",
+        "description": "A sneak peek into the upcoming slate of OXO original series and movies.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+        "trending": true
+    },
+    {
+        "id": "org-6",
+        "title": "The Next Game – Episode 01",
+        "category": "OXO Originals",
+        "genres": [
+            "Drama",
+            "Thriller"
+        ],
+        "duration": "45m",
+        "year": "2026",
+        "language": "English",
+        "type": "Original",
+        "badge": "NEW EPISODE",
+        "rating": "9.5",
+        "quality": "4K HDR",
+        "poster": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=80",
+        "description": "When a mysterious game invites players to win big, the stakes are deadlier than they seem.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+        "trending": true
+    },
+    {
+        "id": "org-7",
+        "title": "Inside The Arena – Documentary",
+        "category": "OXO Originals",
+        "genres": [
+            "Documentary",
+            "Sports"
+        ],
+        "duration": "1h 20m",
+        "year": "2026",
+        "language": "English",
+        "type": "Original",
+        "badge": "DOCUSERIES",
+        "rating": "9.1",
+        "quality": "4K UHD",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80",
+        "backdrop": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80",
+        "description": "An exclusive look behind the scenes of professional esports arenas.",
+        "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+        "trending": false
+    }
+],
       quality: "4K HDR Dolby Vision",
       poster: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
       backdrop: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1200&q=80",
@@ -434,7 +652,7 @@ const OTT_DATA = {
     {
       id: "org-2",
       title: "Code of Shadows",
-      category: "Originals",
+      category: "OXO Originals", language: "English", type: "Original", trending: true,
       badge: "OXO ORIGINAL",
       rating: "9.4/10",
       year: "2026",
@@ -465,7 +683,7 @@ const OTT_DATA = {
     {
       id: "org-3",
       title: "Velocity: Born to Race",
-      category: "Originals",
+      category: "OXO Originals", language: "English", type: "Original", trending: true,
       badge: "DOCUSERIES ORIGINAL",
       rating: "9.7/10",
       year: "2026",
@@ -480,7 +698,7 @@ const OTT_DATA = {
     {
       id: "org-4",
       title: "The Last Alchemist",
-      category: "Originals",
+      category: "OXO Originals", language: "English", type: "Original", trending: true,
       badge: "FANTASY ORIGINAL",
       rating: "9.1/10",
       year: "2026",
@@ -576,3 +794,4 @@ function findMediaById(id) {
   ];
   return all.find(item => item.id === id) || null;
 }
+
