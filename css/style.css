@@ -1464,13 +1464,23 @@ button {
   text-align: center;
 }
 
-.devices-hero-img {
+.devices-hero-img,
+.devices-hero-video {
   width: 100%;
   max-width: 540px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-red-strong);
   border: 2px solid var(--oxo-border-glow);
   margin: 0 auto;
+  display: block;
+  background-color: #000000;
+}
+
+.devices-hero-video::-webkit-media-controls,
+.devices-hero-video::-webkit-media-controls-enclosure {
+  display: none !important;
 }
 
 /* ==========================================================================

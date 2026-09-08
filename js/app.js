@@ -18,6 +18,7 @@ const OXOApp = {
     this.initQuickViewModal();
     this.initCheckoutModal();
     this.updateWatchlistBadges();
+    this.initDevicesVideo();
 
     // If navigating inside the site on other pages, remember session so intro isn't replayed
     try {
@@ -122,6 +123,23 @@ const OXOApp = {
           OXOApp.showToast(isMuted ? 'Audio Muted' : 'Audio Enabled', isMuted ? 'fa-volume-mute' : 'fa-volume-up');
         }
       });
+    }
+  },
+
+  // --------------------------------------------------------------------------
+  // MULTI-DEVICE SECTION SHOWCASE VIDEO
+  // --------------------------------------------------------------------------
+  initDevicesVideo() {
+    const devVideo = document.querySelector('.devices-hero-video');
+    if (devVideo) {
+      devVideo.muted = true;
+      const playPromise = devVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          devVideo.muted = true;
+          devVideo.play().catch(() => {});
+        });
+      }
     }
   },
 
