@@ -12,6 +12,7 @@ const OXOApp = {
   init() {
     this.loadStorage();
     this.initNavbar();
+    this.initHeroVideo();
     this.initHeroSlider();
     this.initSearchModal();
     this.initQuickViewModal();
@@ -58,6 +59,46 @@ const OXOApp = {
         navMenu.classList.toggle('open');
         mobileMenuBtn.innerHTML = navMenu.classList.contains('open') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
       });
+    }
+  },
+
+  // --------------------------------------------------------------------------
+  // HERO FULLSCREEN BACKGROUND VIDEO
+  // --------------------------------------------------------------------------
+  initHeroVideo() {
+    const heroVideo = document.getElementById('hero-bg-video');
+    const soundToggle = document.getElementById('hero-sound-toggle');
+    const soundIcon = document.getElementById('hero-sound-icon');
+    const soundLabel = document.getElementById('hero-sound-label');
+
+    if (heroVideo) {
+      // Ensure muted state is set so browsers allow autoplay
+      heroVideo.muted = true;
+      
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          heroVideo.muted = true;
+          heroVideo.play().catch(() => {});
+        });
+      }
+
+      // Sound toggle interaction
+      if (soundToggle) {
+        soundToggle.addEventListener('click', () => {
+          if (heroVideo.muted) {
+            heroVideo.muted = false;
+            if (soundIcon) soundIcon.className = 'fas fa-volume-up';
+            if (soundLabel) soundLabel.textContent = 'Audio On';
+            OXOApp.showToast('Hero Audio Enabled', 'fa-volume-up');
+          } else {
+            heroVideo.muted = true;
+            if (soundIcon) soundIcon.className = 'fas fa-volume-mute';
+            if (soundLabel) soundLabel.textContent = 'Muted';
+            OXOApp.showToast('Hero Audio Muted', 'fa-volume-mute');
+          }
+        });
+      }
     }
   },
 

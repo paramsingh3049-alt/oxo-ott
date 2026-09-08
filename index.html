@@ -60,24 +60,96 @@
   </nav>
 
   <!-- ==========================================================================
-       HERO BILLBOARD SLIDER
+       HERO CINEMATIC FULLSCREEN BACKGROUND VIDEO
        ========================================================================== -->
-  <section class="hero-section">
-    <div class="hero-slider" id="hero-slider">
-      <!-- Slides will be rendered dynamically by js/app.js -->
+  <section class="hero-section hero-fullscreen-video">
+    <!-- Background Video Container -->
+    <div class="hero-video-wrap">
+      <video
+        id="hero-bg-video"
+        class="hero-bg-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="assets/images/oxo-brand-poster.png"
+      >
+        <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-video-overlay"></div>
     </div>
 
-    <div class="hero-controls">
-      <button class="hero-arrow-btn" id="hero-prev-btn"><i class="fas fa-chevron-left"></i></button>
-      <div class="hero-indicators-wrap" id="hero-indicators" style="display:flex; gap:0.5rem;"></div>
-      <button class="hero-arrow-btn" id="hero-next-btn"><i class="fas fa-chevron-right"></i></button>
+    <!-- Hero Content Overlay -->
+    <div class="hero-content">
+      <div class="hero-badges-row">
+        <span class="hero-badge-pill"><i class="fas fa-fire"></i> STREAMING NOW IN 4K UHD</span>
+        <span class="hero-quality-pill">DOLBY VISION</span>
+        <span class="hero-quality-pill"><i class="fas fa-volume-up"></i> ATMOS 7.1</span>
+        <span class="hero-badge-pill" style="background: linear-gradient(135deg, #ffb800 0%, #e67e00 100%); color:#000; font-weight:800;"><i class="fas fa-crown"></i> VIP ACCESS</span>
+      </div>
+
+      <h1 class="hero-title">
+        OXO <span class="text-accent-red">XTREAM</span>
+      </h1>
+
+      <div class="hero-tagline">
+        SPORTS <span>•</span> MEDIA <span>•</span> ORIGINALS <span>•</span> LIVE ENTERTAINMENT
+      </div>
+
+      <p class="hero-desc">
+        Stream stadium-grade live sports, blockbuster 4K HDR cinema, and exclusive original releases with zero lag and immersive Dolby Atmos audio.
+      </p>
+
+      <div class="hero-actions">
+        <a href="sports.html" class="btn-primary">
+          <i class="fas fa-play"></i> Start Watching Free
+        </a>
+        <a href="pricing.html" class="btn-secondary" style="border-color: rgba(255, 184, 0, 0.4); color: #ffc837;">
+          <i class="fas fa-bolt"></i> Get VIP Pass
+        </a>
+        <a href="movies.html" class="btn-secondary">
+          <i class="fas fa-film"></i> Explore Catalog
+        </a>
+      </div>
+
+      <!-- Quick Platform Stats & Sound Toggle -->
+      <div class="hero-stats-row">
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">500+</span>
+          <span class="hero-stat-lbl">Live Channels</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">10,000+</span>
+          <span class="hero-stat-lbl">4K Titles</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">Zero</span>
+          <span class="hero-stat-lbl">Buffering</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+          <button id="hero-sound-toggle" class="hero-sound-btn" title="Toggle Sound" aria-label="Toggle Sound">
+            <i class="fas fa-volume-mute" id="hero-sound-icon"></i> <span id="hero-sound-label">Muted</span>
+          </button>
+        </div>
+      </div>
     </div>
+
+    <!-- Scroll Down Prompt -->
+    <a href="#category-bar" class="hero-scroll-prompt" aria-label="Scroll Down">
+      <span>EXPLORE STREAMS</span>
+      <i class="fas fa-chevron-down"></i>
+    </a>
   </section>
 
   <!-- ==========================================================================
        CATEGORY QUICK PILLS & LIVE SPORTS TICKER
        ========================================================================== -->
-  <section class="category-bar-section">
+  <section class="category-bar-section" id="category-bar">
     <div class="category-bar-container">
       <div class="category-pills">
         <a href="index.html" class="cat-pill active"><i class="fas fa-globe"></i> All Stream</a>
