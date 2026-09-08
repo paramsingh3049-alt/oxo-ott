@@ -13,8 +13,95 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/intro.css">
 </head>
 <body>
+
+  <!-- ==========================================================================
+       CINEMATIC VIDEO INTRO ANIMATION
+       ========================================================================== -->
+  <div id="oxo-intro" class="oxo-intro" role="dialog" aria-label="Welcome to OXO XTREAM">
+    <div class="intro-glow-backdrop"></div>
+    
+    <div class="intro-content-wrap">
+      <div class="intro-video-box">
+        <video id="intro-video" class="intro-video" autoplay muted playsinline preload="auto">
+          <source src="assets/videos/oxoxtream-intro.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="intro-brand-caption">
+        <div class="intro-brand-name">OXO XTREAM</div>
+        <div class="intro-brand-tagline">ON-DEMAND <span>•</span> EXPERIENCE <span>•</span> ORIGINALS</div>
+      </div>
+    </div>
+
+    <button id="intro-skip-btn" class="intro-skip-btn" title="Skip Intro">
+      <span>Skip Intro</span> <i class="fas fa-forward"></i>
+    </button>
+
+    <div class="intro-progress-bar">
+      <div id="intro-progress-fill" class="intro-progress-fill"></div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Prevent body scrolling while intro is visible
+      document.body.style.overflow = 'hidden';
+
+      const introEl = document.getElementById('oxo-intro');
+      const introVideo = document.getElementById('intro-video');
+      const skipBtn = document.getElementById('intro-skip-btn');
+      const progressFill = document.getElementById('intro-progress-fill');
+      let isIntroFinished = false;
+
+      function finishIntro() {
+        if (isIntroFinished) return;
+        isIntroFinished = true;
+
+        if (introEl) {
+          introEl.classList.add('fade-out');
+          setTimeout(() => {
+            introEl.style.display = 'none';
+            document.body.style.overflow = '';
+          }, 700);
+        } else {
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (introVideo) {
+        // Attempt autoplay immediately
+        const playPromise = introVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function() {
+            introVideo.muted = true;
+            introVideo.play().catch(function() {});
+          });
+        }
+
+        // Smooth progress bar update
+        introVideo.addEventListener('timeupdate', function() {
+          if (introVideo.duration && progressFill) {
+            const percent = (introVideo.currentTime / introVideo.duration) * 100;
+            progressFill.style.width = percent + '%';
+          }
+        });
+
+        // Trigger finish when video playback ends naturally
+        introVideo.addEventListener('ended', finishIntro);
+      }
+
+      // Skip button handler
+      if (skipBtn) {
+        skipBtn.addEventListener('click', finishIntro);
+      }
+
+      // Safety timeout: automatically finish intro after 4.5 seconds
+      setTimeout(finishIntro, 4500);
+    })();
+  </script>
 
   <!-- ==========================================================================
        NAVIGATION BAR
