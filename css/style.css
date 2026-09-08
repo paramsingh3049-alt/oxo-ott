@@ -154,25 +154,19 @@ button {
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0;
   text-decoration: none;
   position: relative;
   z-index: 10;
+  transition: transform var(--transition-fast);
 }
 
-.brand-logo-img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid var(--oxo-red);
-  box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+.brand-logo:hover {
+  transform: translateY(-1px);
 }
 
-.brand-logo:hover .brand-logo-img {
-  transform: scale(1.06);
-  box-shadow: var(--shadow-red-strong);
+.brand-logo:hover .brand-name {
+  filter: brightness(1.15) drop-shadow(0 0 12px rgba(229, 9, 20, 0.6));
 }
 
 .brand-text {
