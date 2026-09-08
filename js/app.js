@@ -79,30 +79,31 @@ const OXOApp = {
     const soundIcon = document.getElementById('hero-sound-icon');
     const soundLabel = document.getElementById('hero-sound-label');
 
+    this.startHeroVideo = () => {
+      if (!heroVideo) return;
+      heroVideo.muted = true;
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          heroVideo.muted = true;
+          heroVideo.play().catch(() => {});
+        });
+      }
+    };
+
     if (heroVideo) {
       heroVideo.muted = true;
-      
-      this.startHeroVideo = () => {
-        if (!heroVideo) return;
-        heroVideo.muted = true;
-        const playPromise = heroVideo.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            heroVideo.muted = true;
-            heroVideo.play().catch(() => {});
-          });
-        }
-      };
-
-      // Only start hero video immediately if intro is skipped or absent
       const hasActiveIntro = document.getElementById('oxo-intro') && !document.documentElement.classList.contains('skip-intro');
       if (!hasActiveIntro) {
         this.startHeroVideo();
       }
+    }
 
-      // Sound toggle interaction
-      if (soundToggle) {
-        soundToggle.addEventListener('click', () => {
+    // Sound toggle button handling
+    if (soundToggle) {
+      let isMuted = true;
+      soundToggle.addEventListener('click', () => {
+        if (heroVideo) {
           if (heroVideo.muted) {
             heroVideo.muted = false;
             if (soundIcon) soundIcon.className = 'fas fa-volume-up';
@@ -114,8 +115,13 @@ const OXOApp = {
             if (soundLabel) soundLabel.textContent = 'Muted';
             OXOApp.showToast('Hero Audio Muted', 'fa-volume-mute');
           }
-        });
-      }
+        } else {
+          isMuted = !isMuted;
+          if (soundIcon) soundIcon.className = isMuted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+          if (soundLabel) soundLabel.textContent = isMuted ? 'Muted' : 'Audio On';
+          OXOApp.showToast(isMuted ? 'Audio Muted' : 'Audio Enabled', isMuted ? 'fa-volume-mute' : 'fa-volume-up');
+        }
+      });
     }
   },
 
