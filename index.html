@@ -13,8 +13,176 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/intro.css">
+
+  <!-- Critical Intro FOUC Guard & Preload -->
+  <style>
+    html.intro-active, html.intro-active body {
+      overflow: hidden !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background-color: #000000 !important;
+    }
+    html.intro-active body > *:not(#oxo-intro) {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    html.skip-intro #oxo-intro {
+      display: none !important;
+    }
+    #oxo-intro {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background-color: #000000;
+      z-index: 99999999;
+    }
+  </style>
+
+  <!-- Immediate Session & Intro State Detection -->
+  <script>
+    (function() {
+      if (sessionStorage.getItem('oxo_intro_viewed')) {
+        document.documentElement.classList.add('skip-intro');
+      } else {
+        document.documentElement.classList.add('intro-active');
+      }
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- ==========================================================================
+       CINEMATIC FULLSCREEN OPENING VIDEO INTRO
+       ========================================================================== -->
+  <div id="oxo-intro" class="oxo-intro" aria-hidden="true">
+    <!-- Clean Loading / Poster Screen for Slow Connections -->
+    <div class="intro-poster-loader" id="intro-loader">
+      <img src="assets/images/logo.png" alt="OXO XTREAM" class="intro-loader-logo">
+      <div class="intro-loader-bar"></div>
+    </div>
+
+    <!-- Fullscreen Video Element -->
+    <video
+      id="intro-video"
+      class="intro-video"
+      autoplay
+      muted
+      playsinline
+      webkit-playsinline
+      x5-playsinline
+      preload="auto"
+      disablepictureinpicture
+      controlslist="nodownload nofullscreen noremoteplayback"
+    >
+      <source src="assets/videos/oxoxtream-intro.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    (function() {
+      const isViewed = sessionStorage.getItem('oxo_intro_viewed');
+      const introEl = document.getElementById('oxo-intro');
+      const introVideo = document.getElementById('intro-video');
+      const introLoader = document.getElementById('intro-loader');
+
+      if (isViewed) {
+        if (introEl) introEl.remove();
+        document.documentElement.classList.remove('intro-active');
+        document.body.classList.remove('intro-active');
+        return;
+      }
+
+      document.body.classList.add('intro-active');
+      let isIntroDone = false;
+
+      // Prevent touchmove/wheel during intro
+      function lockScroll(e) {
+        if (!isIntroDone) {
+          e.preventDefault();
+        }
+      }
+      window.addEventListener('wheel', lockScroll, { passive: false });
+      window.addEventListener('touchmove', lockScroll, { passive: false });
+
+      function finishIntro() {
+        if (isIntroDone) return;
+        isIntroDone = true;
+
+        sessionStorage.setItem('oxo_intro_viewed', 'true');
+        window.removeEventListener('wheel', lockScroll);
+        window.removeEventListener('touchmove', lockScroll);
+
+        // Signal revealing phase so main website smoothly fades in
+        document.documentElement.classList.add('intro-revealing');
+        document.documentElement.classList.remove('intro-active');
+        document.body.classList.remove('intro-active');
+
+        if (introEl) {
+          introEl.classList.add('fade-out');
+
+          // Trigger hero background video in sync with crossfade
+          if (window.OXOApp && typeof window.OXOApp.startHeroVideo === 'function') {
+            window.OXOApp.startHeroVideo();
+          }
+
+          setTimeout(function() {
+            introEl.remove();
+            document.documentElement.classList.remove('intro-revealing');
+          }, 1000);
+        } else {
+          document.documentElement.classList.remove('intro-revealing');
+          if (window.OXOApp && typeof window.OXOApp.startHeroVideo === 'function') {
+            window.OXOApp.startHeroVideo();
+          }
+        }
+      }
+
+      if (introVideo) {
+        const hideLoader = function() {
+          if (introLoader) {
+            introLoader.classList.add('loaded');
+          }
+        };
+
+        introVideo.addEventListener('playing', hideLoader);
+        introVideo.addEventListener('canplay', hideLoader);
+        introVideo.addEventListener('timeupdate', function() {
+          if (introVideo.currentTime > 0.08) hideLoader();
+          // Safety edge detection if ended event is delayed
+          if (introVideo.duration && introVideo.currentTime >= introVideo.duration - 0.08) {
+            finishIntro();
+          }
+        });
+
+        // Trigger finish when video ends naturally
+        introVideo.addEventListener('ended', finishIntro);
+        introVideo.addEventListener('error', finishIntro);
+
+        // Guarantee muted state and trigger autoplay immediately
+        introVideo.muted = true;
+        introVideo.defaultMuted = true;
+        const playPromise = introVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.then(hideLoader).catch(function() {
+            introVideo.muted = true;
+            introVideo.play().then(hideLoader).catch(function() {
+              finishIntro();
+            });
+          });
+        }
+      } else {
+        finishIntro();
+      }
+
+      // Safety timeout: video is 4.0s; 6.5s safety fallback guarantees never getting blocked
+      setTimeout(finishIntro, 6500);
+    })();
+  </script>
 
   <!-- ==========================================================================
        NAVIGATION BAR

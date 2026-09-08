@@ -18,6 +18,14 @@ const OXOApp = {
     this.initQuickViewModal();
     this.initCheckoutModal();
     this.updateWatchlistBadges();
+
+    // If navigating inside the site on other pages, remember session so intro isn't replayed
+    try {
+      const path = window.location.pathname.toLowerCase();
+      if (!path.endsWith('index.html') && path !== '/' && path !== '') {
+        sessionStorage.setItem('oxo_intro_viewed', 'true');
+      }
+    } catch (e) {}
   },
 
   loadStorage() {
@@ -72,15 +80,24 @@ const OXOApp = {
     const soundLabel = document.getElementById('hero-sound-label');
 
     if (heroVideo) {
-      // Ensure muted state is set so browsers allow autoplay
       heroVideo.muted = true;
       
-      const playPromise = heroVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          heroVideo.muted = true;
-          heroVideo.play().catch(() => {});
-        });
+      this.startHeroVideo = () => {
+        if (!heroVideo) return;
+        heroVideo.muted = true;
+        const playPromise = heroVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            heroVideo.muted = true;
+            heroVideo.play().catch(() => {});
+          });
+        }
+      };
+
+      // Only start hero video immediately if intro is skipped or absent
+      const hasActiveIntro = document.getElementById('oxo-intro') && !document.documentElement.classList.contains('skip-intro');
+      if (!hasActiveIntro) {
+        this.startHeroVideo();
       }
 
       // Sound toggle interaction
