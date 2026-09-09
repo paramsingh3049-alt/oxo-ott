@@ -670,14 +670,77 @@ button {
 
 .hero-fullscreen-video .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+  font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.5px;
-  margin-bottom: 0.85rem;
+  line-height: 1.06;
+  letter-spacing: 1px;
+  margin-bottom: 0.95rem;
   text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  perspective: 1000px;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9));
+}
+
+/* 3D OXO: Clean glowing metallic border, subtle reflection, realistic extrusion */
+.oxo-word-3d {
+  position: relative;
+  display: inline-block;
+  font-weight: 950;
+  letter-spacing: 3px;
+  padding: 0 0.15rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f6fa 38%, #b8bfcb 75%, #767d8a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+  text-shadow:
+    0 1px 0 #d9dfea,
+    0 2px 0 #a2abb9,
+    0 3px 0 #7b8595,
+    0 4px 0 #525a66,
+    0 5px 2px rgba(0, 0, 0, 0.7),
+    0 8px 16px rgba(0, 0, 0, 0.85),
+    0 0 22px rgba(255, 255, 255, 0.4),
+    0 0 45px rgba(200, 220, 255, 0.22);
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.oxo-word-3d:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+}
+
+/* 3D XTREAM: Brighter, more powerful with distinct glowing edge and cinematic red highlights */
+.xtream-word-3d {
+  position: relative;
+  display: inline-block;
+  font-weight: 950;
+  letter-spacing: 3px;
+  padding: 0 0.15rem;
+  background: linear-gradient(180deg, #fff2f3 0%, #ff4b55 30%, #e50914 65%, #92040c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 110, 118, 0.95);
+  text-shadow:
+    0 1px 0 #ff626a,
+    0 2px 0 #e50914,
+    0 3px 0 #b3060f,
+    0 4px 0 #7a0208,
+    0 5px 2px rgba(0, 0, 0, 0.75),
+    0 9px 20px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(255, 42, 52, 0.75),
+    0 0 50px rgba(229, 9, 20, 0.55),
+    0 0 85px rgba(229, 9, 20, 0.35);
+  filter: drop-shadow(0 0 20px rgba(255, 42, 52, 0.65));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.xtream-word-3d:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 0 28px rgba(255, 42, 52, 0.9));
 }
 
 .text-accent-red {
