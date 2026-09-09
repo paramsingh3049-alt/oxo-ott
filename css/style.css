@@ -670,77 +670,103 @@ button {
 
 .hero-fullscreen-video .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 6vw, 5rem);
-  font-weight: 900;
-  line-height: 1.06;
-  letter-spacing: 1px;
-  margin-bottom: 0.95rem;
+  font-size: clamp(3rem, 6.2vw, 5.4rem);
+  font-weight: 950;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.65rem 1rem;
-  perspective: 1000px;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9));
+  gap: 0.8rem 1.35rem;
+  perspective: 1200px;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.95));
 }
 
-/* 3D OXO: Clean glowing metallic border, subtle reflection, realistic extrusion */
+/* 3D OXO: Heavy chrome-silver bevel, specular liquid-metal sheen & warm back-glow rim */
 .oxo-word-3d {
   position: relative;
   display: inline-block;
   font-weight: 950;
-  letter-spacing: 3px;
-  padding: 0 0.15rem;
-  background: linear-gradient(180deg, #ffffff 0%, #f4f6fa 38%, #b8bfcb 75%, #767d8a 100%);
+  letter-spacing: 0.08em;
+  padding: 0.05em 0.1em;
+  background: linear-gradient(
+    175deg,
+    #ffffff 0%,
+    #f2f5f9 22%,
+    #cfd6e2 42%,
+    #7a8494 50%,
+    #9aa5b8 52%,
+    #e8edf5 72%,
+    #b2bccb 88%,
+    #697282 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.95);
   text-shadow:
-    0 1px 0 #d9dfea,
-    0 2px 0 #a2abb9,
-    0 3px 0 #7b8595,
-    0 4px 0 #525a66,
-    0 5px 2px rgba(0, 0, 0, 0.7),
-    0 8px 16px rgba(0, 0, 0, 0.85),
-    0 0 22px rgba(255, 255, 255, 0.4),
-    0 0 45px rgba(200, 220, 255, 0.22);
-  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
+    0 1px 0 #ffffff,
+    0 2px 0 #dbe2ed,
+    0 3px 0 #b0bccd,
+    0 4px 0 #8592a4,
+    0 5px 0 #5c687a,
+    0 6px 0 #3e4653,
+    0 7px 1px rgba(0, 0, 0, 0.7),
+    0 9px 3px rgba(0, 0, 0, 0.85),
+    0 14px 28px rgba(0, 0, 0, 0.95),
+    0 0 16px rgba(255, 255, 255, 0.6),
+    0 0 35px rgba(255, 95, 45, 0.28);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 25px rgba(255, 70, 30, 0.25));
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
 .oxo-word-3d:hover {
   transform: translateY(-2px) scale(1.02);
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 35px rgba(255, 90, 40, 0.4));
 }
 
-/* 3D XTREAM: Brighter, more powerful with distinct glowing edge and cinematic red highlights */
+/* 3D XTREAM: Intense fiery red/orange chrome treatment with bevel highlights and deep red core */
 .xtream-word-3d {
   position: relative;
   display: inline-block;
   font-weight: 950;
-  letter-spacing: 3px;
-  padding: 0 0.15rem;
-  background: linear-gradient(180deg, #fff2f3 0%, #ff4b55 30%, #e50914 65%, #92040c 100%);
+  letter-spacing: 0.08em;
+  padding: 0.05em 0.1em;
+  background: linear-gradient(
+    175deg,
+    #fff5ea 0%,
+    #ffb077 18%,
+    #ff4f28 38%,
+    #e50914 50%,
+    #ff2e1f 52%,
+    #ff7043 68%,
+    #cc0610 84%,
+    #690207 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 110, 118, 0.95);
+  -webkit-text-stroke: 1.5px rgba(255, 145, 90, 0.95);
   text-shadow:
-    0 1px 0 #ff626a,
-    0 2px 0 #e50914,
-    0 3px 0 #b3060f,
-    0 4px 0 #7a0208,
-    0 5px 2px rgba(0, 0, 0, 0.75),
-    0 9px 20px rgba(0, 0, 0, 0.9),
-    0 0 25px rgba(255, 42, 52, 0.75),
-    0 0 50px rgba(229, 9, 20, 0.55),
-    0 0 85px rgba(229, 9, 20, 0.35);
-  filter: drop-shadow(0 0 20px rgba(255, 42, 52, 0.65));
+    0 1px 0 #ff9966,
+    0 2px 0 #ff4b2b,
+    0 3px 0 #e50914,
+    0 4px 0 #b3060f,
+    0 5px 0 #800208,
+    0 6px 0 #520004,
+    0 7px 1px rgba(0, 0, 0, 0.75),
+    0 9px 3px rgba(0, 0, 0, 0.9),
+    0 15px 30px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(255, 80, 40, 0.7),
+    0 0 45px rgba(229, 9, 20, 0.55),
+    0 0 75px rgba(229, 9, 20, 0.35);
+  filter: drop-shadow(0 0 15px rgba(255, 70, 30, 0.6)) drop-shadow(0 0 30px rgba(229, 9, 20, 0.45));
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
 .xtream-word-3d:hover {
   transform: translateY(-2px) scale(1.02);
-  filter: drop-shadow(0 0 28px rgba(255, 42, 52, 0.9));
+  filter: drop-shadow(0 0 24px rgba(255, 90, 40, 0.85)) drop-shadow(0 0 45px rgba(229, 9, 20, 0.65));
 }
 
 .text-accent-red {
